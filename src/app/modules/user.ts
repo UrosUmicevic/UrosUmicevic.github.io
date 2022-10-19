@@ -6,4 +6,5 @@ export class User {
   age!: number;
   location!: string;
   phone!: number;
+  actions!: string;
 }

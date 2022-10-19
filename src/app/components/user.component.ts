@@ -3,13 +3,13 @@ import { User } from '../modules/user';
 import { UserService } from '../services/user.service';
 
 const ELEMENT_DATA: User[] = [
-  { id: 1, name: 'Uros', email: 'umicevic.uros998@gmail.com', role: 'admin1', age: 24, location: 'Belgrade', phone: 444333, },
-  { id: 2, name: 'Ognjen', email: 'pejcinovic.ognjen@gmail.com', role: 'admin', age: 28, location: 'Belgrade', phone: 333444, },
-  { id: 3, name: '', email: '', role: '', age: 0, location: '', phone: 0, },
-  { id: 4, name: '', email: '', role: '', age: 0, location: '', phone: 0, },
-  { id: 5, name: '', email: '', role: '', age: 0, location: '', phone: 0, },
-  { id: 6, name: '', email: '', role: '', age: 0, location: '', phone: 0, },
-  { id: 7, name: '', email: '', role: '', age: 0, location: '', phone: 0, },
+  { id: 1, name: 'Uros', email: 'umicevic.uros998@gmail.com', role: 'admin1', age: 24, location: 'Belgrade', phone: 444333,actions:'' },
+  { id: 2, name: 'Ognjen', email: 'pejcinovic.ognjen@gmail.com', role: 'admin', age: 28, location: 'Belgrade', phone: 333444,actions:'' },
+  { id: 3, name: '', email: '', role: '', age: 0, location: '', phone: 0, actions:'' },
+  { id: 4, name: '', email: '', role: '', age: 0, location: '', phone: 0, actions:'' },
+  { id: 5, name: '', email: '', role: '', age: 0, location: '', phone: 0, actions:'' },
+  { id: 6, name: '', email: '', role: '', age: 0, location: '', phone: 0, actions:'' },
+  { id: 7, name: '', email: '', role: '', age: 0, location: '', phone: 0, actions:''},
 ];
 @Component({
   selector: 'app-user',
@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
 
   users: User[] = [];
 
-  displayedColumns: string[] = ['id', 'name', 'email', 'role', 'age', 'location', 'phone'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'role', 'age', 'location', 'phone','actions'];
   dataSource = ELEMENT_DATA;
 
   constructor(
@@ -32,7 +32,9 @@ export class UserComponent implements OnInit {
       console.log(res);
     });;
   }
-  deleteUser(users: User){
-
-  }
+  deleteUser(user: User){
+    this.userService.delete(user).subscribe( data => {
+      console.log(data);
+  });
+}
 }

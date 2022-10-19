@@ -44,6 +44,15 @@
       "age": null,
       "location": null,
       "phone": null
+    },
+    {
+      "id": 6,
+      "name": "Aleksandar",
+      "email": "aleksandar@gmail",
+      "role": "admin4",
+      "age": "27",
+      "location": "Novi Sad",
+      "phone": "11111111"
     }
   ]
 }

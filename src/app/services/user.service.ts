@@ -40,7 +40,7 @@ export class UserService {
   }
 
   delete(user: User) {
-    return this.http.delete<User[]>('http://localhost:3000/user');
+    return this.http.delete('http://localhost:3000/user');
  }
 
   public extractData(res: Response) {

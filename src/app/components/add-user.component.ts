@@ -51,7 +51,7 @@ export class AddUserComponent implements OnInit {
 
   addNewUser() {
     this.userService.addUser(this.form.value);
-    if (this.checked == true) {
+    if (this.checked === true) {
       this.userService.isChecked();
     }
     else {
