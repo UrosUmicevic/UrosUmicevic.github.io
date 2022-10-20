@@ -23,15 +23,16 @@ export class UserService {
 
   getUsers() {
     return this.http.get<User[]>('http://localhost:3000/user');
-    /* .subscribe((res) => {
-      this.jsonDataResult = res;
-      console.log('--- result :: ', this.jsonDataResult);
-    }); */
+  }
+
+  getUserbyId(id: number){
+    return this.http.get<User>('http://localhost:3000/user'+ id);
   }
 
   addUser(user: User) {
     this.http.post('http://localhost:3000/user', user).subscribe((res) => {
       console.log(res);
+      this.router.navigate(['../user'], {relativeTo: this.route});
     })
   }    
 
@@ -39,9 +40,15 @@ export class UserService {
     this.router.navigate(['../user'], {relativeTo: this.route});
   }
 
-  delete(user: User) {
-    return this.http.delete('http://localhost:3000/user');
+  delete(id : number) {
+   const deleteEndpoint = 'http://localhost:3000/user/' + id;
+   return this.http.delete(deleteEndpoint);
  }
+  
+  update(id: number){
+    let endPoints = 'user/1'
+    this.http.put('http://localhost:3000/'+ endPoints ,id);
+  }
 
   public extractData(res: Response) {
     const body = res.json();

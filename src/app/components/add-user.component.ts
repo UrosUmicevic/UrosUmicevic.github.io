@@ -16,8 +16,9 @@ export class AddUserComponent implements OnInit {
   form!: FormGroup;
   users: User[] = []
   user!: User;
+  isAddMode!: boolean;
   checked!: boolean;
-
+  id!: number;
   constructor(
     private userService: UserService,
     private formbuilder: FormBuilder,
@@ -27,15 +28,8 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit(): void {
 
-    /*this.form = this.formbuilder.group({
-      id: [],
-      name: [''],
-      email: [''],
-      role: [''],
-      age: [],
-      location: [''],
-      phone: [],
-    });*/
+    this.id = this.route.snapshot.params['id'];
+    this.isAddMode = !this.id;
 
     this.form = new FormGroup({
       id: new FormControl(),
@@ -45,29 +39,16 @@ export class AddUserComponent implements OnInit {
       age: new FormControl(),
       location: new FormControl(),
       phone: new FormControl(),
-
     })
-  }
 
+    if (!this.isAddMode) {
+        this.userService.getUserbyId(this.id).subscribe(x => this.form.patchValue(x));
+    }
+  }
   addNewUser() {
     this.userService.addUser(this.form.value);
-    if (this.checked === true) {
-      this.userService.isChecked();
-    }
-    else {
-      return;
-    }
-
-
-  };
-
-
-
-  /* window.alert('User has been added'); */
-  /*this.user.age = 22;
-this.user.name = '';
-this.user.email = '';
-this.user.location = '';
-this.user.phone = 1111;
-this.user.role = '';*/
+  }
+  updateUser() {
+    this.userService.update(this.form.value);
+  }
 }

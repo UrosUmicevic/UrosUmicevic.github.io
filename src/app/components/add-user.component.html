@@ -1,5 +1,6 @@
 <div class="nav">
-  <h2> Add new user: </h2>
+  <h1 *ngIf="isAddMode">Add User</h1>
+  <h1 *ngIf="!isAddMode">Update User</h1>
 </div>
 
 <form [formGroup]="form" (ngSubmit)="addNewUser()">

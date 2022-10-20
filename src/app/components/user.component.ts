@@ -2,15 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../modules/user';
 import { UserService } from '../services/user.service';
 
-const ELEMENT_DATA: User[] = [
-  { id: 1, name: 'Uros', email: 'umicevic.uros998@gmail.com', role: 'admin1', age: 24, location: 'Belgrade', phone: 444333,actions:'' },
-  { id: 2, name: 'Ognjen', email: 'pejcinovic.ognjen@gmail.com', role: 'admin', age: 28, location: 'Belgrade', phone: 333444,actions:'' },
-  { id: 3, name: '', email: '', role: '', age: 0, location: '', phone: 0, actions:'' },
-  { id: 4, name: '', email: '', role: '', age: 0, location: '', phone: 0, actions:'' },
-  { id: 5, name: '', email: '', role: '', age: 0, location: '', phone: 0, actions:'' },
-  { id: 6, name: '', email: '', role: '', age: 0, location: '', phone: 0, actions:'' },
-  { id: 7, name: '', email: '', role: '', age: 0, location: '', phone: 0, actions:''},
-];
+const ELEMENT_DATA: User[] = [];
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -20,7 +12,7 @@ export class UserComponent implements OnInit {
 
   users: User[] = [];
 
-  displayedColumns: string[] = ['id', 'name', 'email', 'role', 'age', 'location', 'phone','actions'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'role', 'age', 'location', 'phone', 'actions'];
   dataSource = ELEMENT_DATA;
 
   constructor(
@@ -32,9 +24,10 @@ export class UserComponent implements OnInit {
       console.log(res);
     });;
   }
-  deleteUser(user: User){
-    this.userService.delete(user).subscribe( data => {
+  deleteUser(id: number) {
+    this.userService.delete(id).subscribe(data => {
       console.log(data);
-  });
-}
+      location.reload();
+    })
+  }
 }
