@@ -26,7 +26,7 @@ export class UserService {
   }
 
   getUserbyId(id: number){
-    return this.http.get<User>('http://localhost:3000/user'+ id);
+    return this.http.get<User>('http://localhost:3000/user/'+ id);
   }
 
   addUser(user: User) {
@@ -45,9 +45,9 @@ export class UserService {
    return this.http.delete(deleteEndpoint);
  }
   
-  update(id: number){
-    let endPoints = 'user/1'
-    this.http.put('http://localhost:3000/'+ endPoints ,id);
+  update(id: number, user: User){
+    let endPoints = 'user' + id
+    this.http.put('http://localhost:3000/'+ endPoints , user);
   }
 
   public extractData(res: Response) {

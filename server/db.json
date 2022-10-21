@@ -1,15 +1,6 @@
 {
   "user": [
     {
-      "id": 1,
-      "name": "Uros",
-      "email": "umicevic.uros998@gmail.com",
-      "role": "admin3",
-      "age": "24",
-      "location": "Belgrade",
-      "phone": "444333"
-    },
-    {
       "id": 2,
       "name": "Ognjen",
       "email": "pejcinovic.ognjen@gmail.com",
@@ -17,6 +8,24 @@
       "age": "28",
       "location": "Belgrade",
       "phone": "2222444"
+    },
+    {
+      "id": 3,
+      "name": "Stefan",
+      "email": "stefan@gmail.com",
+      "role": "admin2",
+      "age": "25",
+      "location": "Belgrade",
+      "phone": "2222222"
+    },
+    {
+      "id": 4,
+      "name": "Uros",
+      "email": "umicevic.uros998@gmail.com",
+      "role": "admin2",
+      "age": "24",
+      "location": "Belgrade",
+      "phone": "44443333"
     }
   ]
 }

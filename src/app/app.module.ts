@@ -13,6 +13,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { AddUserComponent } from './components/add-user.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { UserService } from './services/user.service';
+import { EditUserComponent } from './components/edit-user.component';
 
 
 
@@ -21,6 +23,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AppComponent,
     UserComponent,
     AddUserComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ReactiveFormsModule,
     MatCheckboxModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

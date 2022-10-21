@@ -5,6 +5,7 @@ import { UserService } from '../services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../modules/user';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {Input} from '@angular/core';
 
 @Component({
   selector: 'app-add-user',
@@ -13,12 +14,14 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class AddUserComponent implements OnInit {
 
+  addMode!: boolean;
   form!: FormGroup;
   users: User[] = []
   user!: User;
-  isAddMode!: boolean;
-  checked!: boolean;
   id!: number;
+  currentUser!: User;
+  loading: boolean = false;
+
   constructor(
     private userService: UserService,
     private formbuilder: FormBuilder,
@@ -27,10 +30,10 @@ export class AddUserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    this.id = this.route.snapshot.params['id'];
-    this.isAddMode = !this.id;
-
+    this.addMode = !this.id;
+    
+    this.userService.getUserbyId(this.id).subscribe(x => this.form.patchValue(x));
+    
     this.form = new FormGroup({
       id: new FormControl(),
       name: new FormControl(),
@@ -41,14 +44,42 @@ export class AddUserComponent implements OnInit {
       phone: new FormControl(),
     })
 
-    if (!this.isAddMode) {
-        this.userService.getUserbyId(this.id).subscribe(x => this.form.patchValue(x));
-    }
   }
+
+  // onAddOrEdit(){
+  //   this.loading = true;
+  //   if(this.addMode){
+  //     this.addNewUser();
+  //   }
+  //   else{
+  //     this.userService.update(this.id, this.user);
+  //   }
+  // }
   addNewUser() {
-    this.userService.addUser(this.form.value);
+    if(!this.addMode)
+      this.userService.addUser(this.form.value);
+    else
+      this.userService.update(this.id, this.user)
+      
+      
   }
-  updateUser() {
-    this.userService.update(this.form.value);
-  }
+  updateUser(id: number) {
+
+    this.userService.getUserbyId(id).subscribe((res) => {
+      this.currentUser = res;
+      console.log(res);
+    });
+    console.log(this.currentUser);
+ 
+    this.form.setValue({
+     id:this.currentUser.id,
+     name: this.currentUser.name,
+     email: this.currentUser.email,
+     role: this.currentUser.role,
+     age: this.currentUser.age,
+     location: this.currentUser.location,
+     phone: this.currentUser.phone
+ 
+    })
+   }
 }

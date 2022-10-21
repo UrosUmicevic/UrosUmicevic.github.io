@@ -1,6 +1,6 @@
 <div class="nav">
-  <h1 *ngIf="isAddMode">Add User</h1>
-  <h1 *ngIf="!isAddMode">Update User</h1>
+  <h1 *ngIf="addMode">Add User</h1>
+  <h1 *ngIf="!addMode">Edit User</h1>
 </div>
 
 <form [formGroup]="form" (ngSubmit)="addNewUser()">
@@ -49,8 +49,7 @@
 
   <div class="form-end">
     <button mat-raised-button color="warn" value="submit"> Done </button>
-    <a routerLink="/user" class="mat-raised-button "> Cancel </a>
-    <mat-checkbox class="example-margin" color="warn" > Check! </mat-checkbox>
+    <a routerLink="/user" class="mat-raised-button "> Cancel </a> 
   </div>
 
 </form>

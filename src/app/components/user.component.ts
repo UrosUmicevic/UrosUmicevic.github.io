@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../modules/user';
 import { UserService } from '../services/user.service';
 
+
+
 const ELEMENT_DATA: User[] = [];
 @Component({
   selector: 'app-user',
@@ -11,7 +13,9 @@ const ELEMENT_DATA: User[] = [];
 export class UserComponent implements OnInit {
 
   users: User[] = [];
-
+  id!: number;
+  user!: User;
+  
   displayedColumns: string[] = ['id', 'name', 'email', 'role', 'age', 'location', 'phone', 'actions'];
   dataSource = ELEMENT_DATA;
 
@@ -23,11 +27,14 @@ export class UserComponent implements OnInit {
       this.dataSource = res;
       console.log(res);
     });;
+
   }
+  
   deleteUser(id: number) {
     this.userService.delete(id).subscribe(data => {
       console.log(data);
       location.reload();
     })
   }
+
 }
