@@ -26,6 +26,15 @@
       "age": "24",
       "location": "Belgrade",
       "phone": "44443333"
+    },
+    {
+      "id": 5,
+      "name": "Aleksandar",
+      "email": "aaaaa@gmail.com",
+      "role": "admin5",
+      "age": "33",
+      "location": "Belgrade",
+      "phone": "2221111"
     }
   ]
 }

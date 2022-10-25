@@ -15,9 +15,9 @@ export class UserService {
   jsonDataResult: any;
 
   constructor(
-      private http: HttpClient,
-      private router: Router,
-      private route: ActivatedRoute) {
+    private http: HttpClient,
+    private router: Router,
+    private route: ActivatedRoute) {
 
   }
 
@@ -25,29 +25,30 @@ export class UserService {
     return this.http.get<User[]>('http://localhost:3000/user');
   }
 
-  getUserbyId(id: number){
-    return this.http.get<User>('http://localhost:3000/user/'+ id);
+  getUserbyId(id: number) {
+    return this.http.get<User>('http://localhost:3000/user/' + id);
   }
 
   addUser(user: User) {
     this.http.post('http://localhost:3000/user', user).subscribe((res) => {
       console.log(res);
-      this.router.navigate(['../user'], {relativeTo: this.route});
+      this.router.navigate(['../user'], { relativeTo: this.route });
     })
-  }    
-
-  isChecked(){
-    this.router.navigate(['../user'], {relativeTo: this.route});
   }
 
-  delete(id : number) {
-   const deleteEndpoint = 'http://localhost:3000/user/' + id;
-   return this.http.delete(deleteEndpoint);
+  delete(id: number) {
+    const deleteEndpoint = 'http://localhost:3000/user/' + id;
+    return this.http.delete(deleteEndpoint);
+  }
+
+  deleteAll(){
+    const deleteEndpoint = 'http://localhost:3000/user'
+    return this.http.delete(deleteEndpoint);
  }
-  
-  update(id: number, user: User){
+
+  update(id: number, user: User) {
     let endPoints = 'user' + id
-    this.http.put('http://localhost:3000/'+ endPoints , user);
+    this.http.put('http://localhost:3000/' + endPoints, user);
   }
 
   public extractData(res: Response) {

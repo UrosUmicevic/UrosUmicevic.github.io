@@ -1,55 +1,54 @@
 <div class="nav">
-    <h1>Edit User</h1>
+  <h1>Edit User</h1>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="updateUser(user.id)">
+
+  <div class="form">
+    <mat-form-field class="form-control" appearance="fill">
+      <mat-label>Name: </mat-label>
+      <input matInput type="text" placeholder="name" name="name" formControlName="name" value="user.name">
+    </mat-form-field>
   </div>
-  
-  <form [formGroup]="form" (ngSubmit)="editUser()">
-  
-    <div class="form">
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Name: </mat-label>
-        <input matInput type="text" placeholder="Name" name="name" formControlName="name">
-      </mat-form-field>
-    </div>
-  
-    <div class="form">
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Email: </mat-label>
-        <input matInput placeholder="Email" formControlName="email">
-      </mat-form-field>
-    </div>
-  
-    <div class="form">
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Role: </mat-label>
-        <input matInput placeholder="Role" formControlName="role">
-      </mat-form-field>
-    </div>
-  
-    <div class="form">
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Age: </mat-label>
-        <input matInput placeholder="Age" formControlName="age">
-      </mat-form-field>
-    </div>
-  
-    <div class="form">
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Location: </mat-label>
-        <input matInput placeholder="Location" formControlName="location">
-      </mat-form-field>
-    </div>
-  
-    <div class="form">
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Phone: </mat-label>
-        <input matInput placeholder="Phone" formControlName="phone">
-      </mat-form-field>
-    </div>
-  
-    <div class="form-end">
-      <button mat-raised-button color="warn" value="submit"> Done </button>
-      <a routerLink="/user" class="mat-raised-button "> Cancel </a> 
-    </div>
-  
-  </form>
-  
+
+  <div class="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email: </mat-label>
+      <input matInput placeholder="email" formControlName="email" value="user.email">
+    </mat-form-field>
+  </div>
+
+  <div class="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Role: </mat-label>
+      <input matInput placeholder="role" formControlName="role" value="user.role">
+    </mat-form-field>
+  </div>
+
+  <div class="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Age: </mat-label>
+      <input matInput placeholder="age" formControlName="age" value="user.age">
+    </mat-form-field>
+  </div>
+
+  <div class="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Location: </mat-label>
+      <input matInput placeholder="location" formControlName="location" value="user.location">
+    </mat-form-field>
+  </div>
+
+  <div class="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Phone: </mat-label>
+      <input matInput placeholder="phone" formControlName="phone" value="user.phone">
+    </mat-form-field>
+  </div>
+
+  <div class="form-end">
+    <button mat-raised-button color="warn" (click)="updateUser(user.id)"> Update </button>
+    <a routerLink="/user" class="mat-raised-button "> Cancel </a>
+  </div>
+
+</form>
