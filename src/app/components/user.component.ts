@@ -17,6 +17,7 @@ export class UserComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'email', 'role', 'age', 'location', 'phone', 'actions'];
   dataSource = ELEMENT_DATA;
 
+
   constructor(
     private userService: UserService) { }
 
@@ -36,10 +37,9 @@ export class UserComponent implements OnInit {
   }
 
   deleteAllUsers(){
-    this.userService.deleteAll().subscribe(data => {
-      console.log(data);
-      location.reload();
-    })
+    console.log('test');
+    this.userService.deleteAll().subscribe();
+      // location.reload();
   }
 
 }

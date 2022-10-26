@@ -39,18 +39,7 @@ export class AddUserComponent implements OnInit {
     })
 
   }
-
-  // onAddOrEdit(){
-  //   this.loading = true;
-  //   if(this.addMode){
-  //     this.addNewUser();
-  //   }
-  //   else{
-  //     this.userService.update(this.id, this.user);
-  //   }
-  // }
   addNewUser() {
-
     this.userService.addUser(this.form.value);
 
   }

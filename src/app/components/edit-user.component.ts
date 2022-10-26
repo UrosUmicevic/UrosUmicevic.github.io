@@ -3,6 +3,9 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { User } from '../modules/user';
 import { ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-edit-user',
@@ -11,8 +14,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditUserComponent implements OnInit {
   
+  id_string: string | null | undefined;
   id!: number;
-  users: User[] = []
+  users: User[] = [];
   // user!: User;
   form!: FormGroup;
   currentUser!: User;
@@ -20,33 +24,12 @@ export class EditUserComponent implements OnInit {
   
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute ) { }
+    private route: ActivatedRoute,
+    private router: Router ) { }
   
     user = new User;
 
   ngOnInit(): void {
-
-    this.route.paramMap.subscribe();
-    this.updateUser(this.id)
-
-    // this.form = new FormGroup({
-    //   id: new FormControl(),
-    //   name: new FormControl(),
-    //   email: new FormControl(),
-    //   role: new FormControl(),
-    //   age: new FormControl(),
-    //   location: new FormControl(),
-    //   phone: new FormControl(),
-    // })
-  }
-
-  updateUser(id: number) {
-
-    this.userService.getUserbyId(id).subscribe((res) => {
-      this.currentUser = res;
-      console.log(res);
-    });
-    console.log(this.currentUser);
     
     this.form = new FormGroup({
       id: new FormControl(),
@@ -56,18 +39,29 @@ export class EditUserComponent implements OnInit {
       age: new FormControl(),
       location: new FormControl(),
       phone: new FormControl(),
-    })
+    });
 
-    this.form.setValue({
-      id: this.currentUser.id,
-      name: this.currentUser.name,
-      email: this.currentUser.email,
-      role: this.currentUser.role,
-      age: this.currentUser.age,
-      location: this.currentUser.location,
-      phone: this.currentUser.phone
+    this.id_string = this.route.snapshot.paramMap.get('id');
+    this.currentUser = new User();
 
-    })
+    this.userService.getUserbyId(this.id_string).subscribe((res) => {
+      this.currentUser.name = res.name;
+      this.currentUser.email = res.email;
+      this.currentUser.role = res.role;
+      this.currentUser.age = res.age;
+      this.currentUser.location = res.location;
+      this.currentUser.phone = res.phone;
+
+      console.log(this.currentUser);
+  
+    });
   }
-}
+
+  updateUser(){
+    this.userService.update(this.id_string, this.form.value).subscribe()
+      console.log(this.currentUser);
+    }
+    }
+
+
 

@@ -2,52 +2,52 @@
   <h1>Edit User</h1>
 </div>
 
-<form [formGroup]="form" (ngSubmit)="updateUser(user.id)">
+<form [formGroup]="form" >
 
   <div class="form">
     <mat-form-field class="form-control" appearance="fill">
       <mat-label>Name: </mat-label>
-      <input matInput type="text" placeholder="name" name="name" formControlName="name" value="user.name">
+      <input matInput type="text" placeholder="name" formControlName="name" [value]="currentUser.name">
     </mat-form-field>
   </div>
 
   <div class="form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Email: </mat-label>
-      <input matInput placeholder="email" formControlName="email" value="user.email">
+      <input matInput placeholder="email" formControlName="email" [value]="currentUser.email">
     </mat-form-field>
   </div>
 
   <div class="form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Role: </mat-label>
-      <input matInput placeholder="role" formControlName="role" value="user.role">
+      <input matInput placeholder="role" formControlName="role" [value]="currentUser.role">
     </mat-form-field>
   </div>
 
   <div class="form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Age: </mat-label>
-      <input matInput placeholder="age" formControlName="age" value="user.age">
+      <input matInput placeholder="age" formControlName="age" [value]="currentUser.age">
     </mat-form-field>
   </div>
 
   <div class="form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Location: </mat-label>
-      <input matInput placeholder="location" formControlName="location" value="user.location">
+      <input matInput placeholder="location" formControlName="location" [value]="currentUser.location">
     </mat-form-field>
   </div>
 
   <div class="form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Phone: </mat-label>
-      <input matInput placeholder="phone" formControlName="phone" value="user.phone">
+      <input matInput placeholder="phone" formControlName="phone" [value]="currentUser.phone">
     </mat-form-field>
   </div>
 
   <div class="form-end">
-    <button mat-raised-button color="warn" (click)="updateUser(user.id)"> Update </button>
+    <button mat-raised-button color="warn" (click)="updateUser()"> Update </button>
     <a routerLink="/user" class="mat-raised-button "> Cancel </a>
   </div>
 

@@ -25,7 +25,7 @@ export class UserService {
     return this.http.get<User[]>('http://localhost:3000/user');
   }
 
-  getUserbyId(id: number) {
+  getUserbyId(id: string | null | undefined) {
     return this.http.get<User>('http://localhost:3000/user/' + id);
   }
 
@@ -42,13 +42,12 @@ export class UserService {
   }
 
   deleteAll(){
-    const deleteEndpoint = 'http://localhost:3000/user'
-    return this.http.delete(deleteEndpoint);
+    return this.http.delete('http://localhost:3000/user');
  }
 
-  update(id: number, user: User) {
-    let endPoints = 'user' + id
-    this.http.put('http://localhost:3000/' + endPoints, user);
+  update(id: string | null | undefined, params: any) {
+    this.router.navigate(['../user'], { relativeTo: this.route });
+    return this.http.put('http://localhost:3000/user/' + id, params);
   }
 
   public extractData(res: Response) {
