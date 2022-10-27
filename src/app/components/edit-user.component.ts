@@ -53,6 +53,16 @@ export class EditUserComponent implements OnInit {
       this.currentUser.phone = res.phone;
 
       console.log(this.currentUser);
+
+    this.form.reset({
+      name: this.currentUser.name,
+      email: this.currentUser.email,
+      role: this.currentUser.role,
+      age: this.currentUser.age,
+      location: this.currentUser.location,
+      phone: this.currentUser.phone
+    });
+
   
     });
   }

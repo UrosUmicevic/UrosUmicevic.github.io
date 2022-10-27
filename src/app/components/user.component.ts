@@ -27,6 +27,8 @@ export class UserComponent implements OnInit {
       console.log(res);
     });;
 
+    
+
   }
 
   deleteUser(id: number) {
@@ -40,6 +42,10 @@ export class UserComponent implements OnInit {
     console.log('test');
     this.userService.deleteAll().subscribe();
       // location.reload();
+  }
+
+  onRefresh(){
+    location.reload();
   }
 
 }
