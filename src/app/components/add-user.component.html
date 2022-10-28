@@ -9,6 +9,7 @@
       <mat-label>Name: </mat-label>
       <input matInput type="text" placeholder="Name" name="name" formControlName="name">
     </mat-form-field>
+    <span style="color: red" *ngIf="name && name.invalid">Invalid name</span>
   </div>
 
   <div class="form">
@@ -16,13 +17,18 @@
       <mat-label>Email: </mat-label>
       <input matInput placeholder="Email" formControlName="email">
     </mat-form-field>
+    <span style="color: red" *ngIf="email && email.invalid">Invalid email</span>
   </div>
 
   <div class="form">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Role: </mat-label>
-      <input matInput placeholder="Role" formControlName="role">
-    </mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Role</mat-label>
+  <select matNativeControl >
+    <option value="admin">Administrator</option>
+    <option value="QA">QA</option>
+    <option value="developer">Developer</option>
+  </select>
+</mat-form-field>
   </div>
 
   <div class="form">
@@ -30,6 +36,7 @@
       <mat-label>Age: </mat-label>
       <input matInput placeholder="Age" formControlName="age">
     </mat-form-field>
+    <span style="color: red" *ngIf="age && age.invalid">Not Valid</span>
   </div>
 
   <div class="form">
@@ -42,13 +49,13 @@
   <div class="form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Phone: </mat-label>
-      <input matInput placeholder="Phone" formControlName="phone">
+      <input matInput placeholder="Phone" formControlName="phone" pattern="[+()0-9]{10,15}">
     </mat-form-field>
   </div>
 
   <div class="form-end">
-    <button mat-raised-button color="warn" value="submit"> Done </button>
-    <a routerLink="/user" class="mat-raised-button "> Cancel </a> 
+    <button mat-raised-button disabled [disabled]="form.invalid" color="warn" value="submit"> Done </button>
+    <a routerLink="/user" class="mat-raised-button "> Cancel </a>
   </div>
 
 </form>

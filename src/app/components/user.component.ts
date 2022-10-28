@@ -39,7 +39,6 @@ export class UserComponent implements OnInit {
   }
 
   deleteAllUsers(){
-    console.log('test');
     this.userService.deleteAll().subscribe();
       // location.reload();
   }

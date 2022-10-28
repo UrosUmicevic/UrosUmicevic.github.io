@@ -5,27 +5,18 @@
       "name": "Ognjen",
       "email": "pejcinovic.ognjen@gmail.com",
       "role": "admin",
-      "age": "28",
+      "age": "29",
       "location": "Belgrade",
-      "phone": "22224444"
-    },
-    {
-      "id": 2,
-      "name": "Uros",
-      "email": "umicevic.uros998@gmail.com",
-      "role": "admin3",
-      "age": "24",
-      "location": "Belgrade",
-      "phone": "444333"
+      "phone": "33335555"
     },
     {
       "id": 3,
       "name": "Stefan",
       "email": "stefan@gmail.com",
       "role": "admin5",
-      "age": "33",
+      "age": "21",
       "location": "Belgrade",
-      "phone": "444444"
+      "phone": "+381646610734"
     },
     {
       "id": 4,
@@ -35,6 +26,15 @@
       "age": "25",
       "location": "Belgrade",
       "phone": "2222211"
+    },
+    {
+      "id": 5,
+      "name": "Aleksandar",
+      "email": "aleksandar.n.jovanovic@gmail.com",
+      "role": "Admin",
+      "age": "32",
+      "location": "Beograd",
+      "phone": "+381645217908"
     }
   ]
 }

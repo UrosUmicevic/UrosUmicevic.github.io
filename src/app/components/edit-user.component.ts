@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { User } from '../modules/user';
 import { ActivatedRoute } from '@angular/router';
@@ -33,12 +33,12 @@ export class EditUserComponent implements OnInit {
     
     this.form = new FormGroup({
       id: new FormControl(),
-      name: new FormControl(),
-      email: new FormControl(),
+      name: new FormControl('',[Validators.pattern ('[a-zA-Z]*$'), Validators.maxLength(10)]),
+      email: new FormControl('',[Validators.email]),
       role: new FormControl(),
       age: new FormControl(),
-      location: new FormControl(),
-      phone: new FormControl(),
+      location: new FormControl('',[Validators.pattern('[a-zA-Z]*$'),Validators.minLength(2),Validators.maxLength(20)]),
+      phone: new FormControl('',[Validators.pattern('[+()0-9]{10,15}')]),
     });
 
     this.id_string = this.route.snapshot.paramMap.get('id');
@@ -71,6 +71,18 @@ export class EditUserComponent implements OnInit {
     this.userService.update(this.id_string, this.form.value).subscribe()
       console.log(this.currentUser);
     }
+    get name(){
+      return this.form.get('name')
+    }
+    get email(){
+      return this.form.get('email')
+    }
+    get age(){
+      return this.form.get('age')
+    }
+    get location(){
+      return this.form.get('location')
+    } 
     }
 
 
