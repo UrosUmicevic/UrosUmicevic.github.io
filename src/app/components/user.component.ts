@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { User } from '../modules/user';
 import { UserService } from '../services/user.service';
+
 
 const ELEMENT_DATA: User[] = [];
 @Component({
@@ -9,27 +10,26 @@ const ELEMENT_DATA: User[] = [];
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
+  
   users: User[] = [];
   id!: number;
   user!: User;
 
-  displayedColumns: string[] = ['id', 'name', 'email', 'role', 'age', 'location', 'phone', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'role', 'age', 'location', 'phone', 'actions','contractStartDate','contractEndDate','description'];
   dataSource = ELEMENT_DATA;
 
 
   constructor(
-    private userService: UserService) { }
+    private userService: UserService,) { }
+
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe((res) => {
       this.dataSource = res;
       console.log(res);
     });;
-
-    
-
   }
+
 
   deleteUser(id: number) {
     this.userService.delete(id).subscribe(data => {
@@ -39,7 +39,9 @@ export class UserComponent implements OnInit {
   }
 
   deleteAllUsers(){
-    this.userService.deleteAll().subscribe();
+    this.userService.deleteAll().subscribe(data =>{
+      console.log(data);
+    });
       // location.reload();
   }
 
@@ -48,3 +50,4 @@ export class UserComponent implements OnInit {
   }
 
 }
+

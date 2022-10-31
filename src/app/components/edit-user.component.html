@@ -5,52 +5,81 @@
 <form [formGroup]="form" >
 
   <div class="form">
-    <mat-form-field class="form-control" appearance="fill">
+    <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Name: </mat-label>
-      <input matInput type="text" placeholder="name" formControlName="name" [value]="currentUser.name">
+      <input matInput type="text" formControlName="name">
+      <mat-error *ngIf="name?.errors?.['pattern']">
+        Please enter valid name.
+      </mat-error>
+      <mat-error *ngIf="name?.errors?.['required']">
+        Name is required
+      </mat-error>
+      <mat-error *ngIf="name?.errors?.['maxlength']">
+        Please enter valid name.
+      </mat-error>
     </mat-form-field>
-    <span style="color: red" *ngIf="name && name.invalid">Invalid name</span>
   </div>
 
   <div class="form">
     <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Email: </mat-label>
-      <input matInput placeholder="email" formControlName="email" [value]="currentUser.email">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email">
+      <mat-error *ngIf="email?.errors?.['email'] && !email?.errors?.['required']">
+       Please enter valid email address
+      </mat-error>
+      <mat-error *ngIf="email?.errors?.['required']">
+        Email is required
+      </mat-error>
     </mat-form-field>
-    <span style="color: red" *ngIf="email && email.invalid">Invalid email</span>
   </div>
 
   <div class="form">
     <mat-form-field appearance="fill">
-      <mat-label>Role</mat-label>
-      <select matNativeControl >
-        <option value="admin">Administrator</option>
-        <option value="QA">QA</option>
-        <option value="developer">Developer</option>
-      </select>
+      <mat-label>Role:</mat-label>
+      <mat-select formControlName="role" >
+        <mat-option *ngFor="let role of roles" [value]="role.value">
+          {{role.viewValue}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
 
   <div class="form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Age: </mat-label>
-      <input matInput placeholder="age" formControlName="age" [value]="currentUser.age">
+      <input matInput placeholder="Age" formControlName="age">
+      <mat-error *ngIf="age?.errors">
+         Age must be over 18 and under 100
+      </mat-error>
+      <mat-error *ngIf="age?.errors?.['required']">
+        Age required
+      </mat-error>
     </mat-form-field>
-    <span style="color: red" *ngIf="age && age.invalid">You must be over 18 years old</span>
-
   </div>
 
   <div class="form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Location: </mat-label>
-      <input matInput placeholder="location" formControlName="location" [value]="currentUser.location">
+      <input matInput placeholder="Location" formControlName="location">
+      <mat-error *ngIf="location?.errors?.['pattern']">
+        Must be real location
+     </mat-error>
+     <mat-error *ngIf="location?.errors?.['maxlength']">
+      Too many characters.
+     </mat-error>
+     <mat-error *ngIf="location?.errors?.['minlength']">
+       Enter valid location.
+     </mat-error>
     </mat-form-field>
   </div>
 
   <div class="form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Phone: </mat-label>
-      <input matInput placeholder="phone" formControlName="phone" [value]="currentUser.phone">
+      <input matInput formControlName="phone" pattern="[+()0-9]{8,15}">
+      <mat-error *ngIf="phone?.errors?.['pattern']">
+        Enter valid number.
+      </mat-error>
     </mat-form-field>
   </div>
 

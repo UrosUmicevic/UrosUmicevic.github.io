@@ -14,6 +14,8 @@ import {MatInputModule} from '@angular/material/input';
 import { AddUserComponent } from './components/add-user.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { EditUserComponent } from './components/edit-user.component';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -34,7 +36,12 @@ import { EditUserComponent } from './components/edit-user.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule,
+    MatNativeDateModule,
+
+    
+
   ],
   providers: [
   

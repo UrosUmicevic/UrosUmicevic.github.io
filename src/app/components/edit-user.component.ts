@@ -5,8 +5,12 @@ import { User } from '../modules/user';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AbstractControl } from '@angular/forms';
 
-
+interface Role {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
@@ -14,6 +18,13 @@ import { Router } from '@angular/router';
 })
 export class EditUserComponent implements OnInit {
   
+  roles: Role[] = [
+    {value: 'Administrator', viewValue: 'Administrator'},
+    {value: 'QA', viewValue: 'QA'},
+    {value: 'Developer', viewValue: 'Developer'},
+    {value: 'Customer', viewValue: 'Customer'},
+  ];
+
   id_string: string | null | undefined;
   id!: number;
   users: User[] = [];
@@ -33,10 +44,10 @@ export class EditUserComponent implements OnInit {
     
     this.form = new FormGroup({
       id: new FormControl(),
-      name: new FormControl('',[Validators.pattern ('[a-zA-Z]*$'), Validators.maxLength(10)]),
-      email: new FormControl('',[Validators.email]),
+      name: new FormControl('',[Validators.required,Validators.pattern ('[a-zA-Z]*$'), Validators.maxLength(10)]),
+      email: new FormControl('',[Validators.required, Validators.email]),
       role: new FormControl(),
-      age: new FormControl(),
+      age: new FormControl('',[Validators.required, AgeValidator, Validators.pattern('[0-9]{2}')]),
       location: new FormControl('',[Validators.pattern('[a-zA-Z]*$'),Validators.minLength(2),Validators.maxLength(20)]),
       phone: new FormControl('',[Validators.pattern('[+()0-9]{10,15}')]),
     });
@@ -68,8 +79,10 @@ export class EditUserComponent implements OnInit {
   }
 
   updateUser(){
-    this.userService.update(this.id_string, this.form.value).subscribe()
-      console.log(this.currentUser);
+    this.userService.update(this.id_string, this.form.value).subscribe((res) => {
+      console.log(res);
+      this.router.navigate(['/user'], { relativeTo: this.route });
+    });
     }
     get name(){
       return this.form.get('name')
@@ -83,6 +96,15 @@ export class EditUserComponent implements OnInit {
     get location(){
       return this.form.get('location')
     } 
+    get phone(){
+      return this.form.get('phone')
+    }
+    }
+    export function AgeValidator(control: AbstractControl): { [key: string]: boolean } | null {
+      if (control.value < 18) {
+        return { 'age': true };
+      }
+      return null;
     }
 
 

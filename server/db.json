@@ -1,40 +1,58 @@
 {
   "user": [
     {
-      "id": 1,
-      "name": "Ognjen",
-      "email": "pejcinovic.ognjen@gmail.com",
-      "role": "admin",
-      "age": "29",
-      "location": "Belgrade",
-      "phone": "33335555"
-    },
-    {
       "id": 3,
-      "name": "Stefan",
+      "name": "Stefann",
       "email": "stefan@gmail.com",
-      "role": "admin5",
+      "role": "",
       "age": "21",
       "location": "Belgrade",
       "phone": "+381646610734"
     },
     {
-      "id": 4,
-      "name": "Aleksandar",
-      "email": "aleksandar222@gmail.com",
-      "role": "admin2",
-      "age": "25",
-      "location": "Belgrade",
-      "phone": "2222211"
-    },
-    {
       "id": 5,
       "name": "Aleksandar",
-      "email": "aleksandar.n.jovanovic@gmail.com",
-      "role": "Admin",
+      "email": "umicevic.uros998@gmail.com",
+      "role": "",
       "age": "32",
-      "location": "Beograd",
-      "phone": "+381645217908"
+      "location": "Belgrade",
+      "phone": "+3816452179080"
+    },
+    {
+      "id": 6,
+      "name": "Uros",
+      "email": "umicevic.uros998@gmail.com",
+      "role": "QA",
+      "age": "18",
+      "location": "Belgrade",
+      "phone": "+381646610734"
+    },
+    {
+      "id": 7,
+      "name": "Uros",
+      "email": "umicevic.uros998@gmail.com",
+      "role": "",
+      "age": "18",
+      "location": "Belgrade",
+      "phone": "+381646610734"
+    },
+    {
+      "id": 8,
+      "name": "Uros",
+      "email": "pejcinovic.ognjen@gmail.com",
+      "role": "Developer",
+      "age": "23",
+      "location": "Belgrade",
+      "phone": "+381646610734"
+    },
+    {
+      "id": 9,
+      "name": "Stefan",
+      "email": "pejcinovic.ognjen@gmail.com",
+      "role": "Administrator",
+      "age": "28",
+      "location": "Belgrade",
+      "phone": "+381646610734"
     }
   ]
 }

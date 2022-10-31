@@ -7,4 +7,8 @@ export class User {
   location!: string;
   phone!: number;
   actions!: string;
+  contractStartDate!: Date;
+  contractEndtDate!: Date;
+  description!: string;
+
 }

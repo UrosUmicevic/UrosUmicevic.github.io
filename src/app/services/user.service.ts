@@ -30,10 +30,7 @@ export class UserService {
   }
 
   addUser(user: User) {
-    this.http.post('http://localhost:3000/user', user).subscribe((res) => {
-      console.log(res);
-      this.router.navigate(['../user'], { relativeTo: this.route });
-    })
+   return this.http.post('http://localhost:3000/user', user);
   }
 
   delete(id: number) {
@@ -46,8 +43,7 @@ export class UserService {
  }
 
   update(id: string | null | undefined, params: any) {
-    this.router.navigate(['../user'], { relativeTo: this.route });
-    return this.http.put('http://localhost:3000/user/' + id, params);
+        return this.http.put('http://localhost:3000/user/' + id, params);
   }
 
   public extractData(res: Response) {
