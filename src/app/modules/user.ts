@@ -8,7 +8,10 @@ export class User {
   phone!: number;
   actions!: string;
   contractStartDate!: Date;
-  contractEndtDate!: Date;
+  contractEndDate!: Date;
   description!: string;
+  date!: Date;
+  
+
 
 }

@@ -83,6 +83,22 @@
     </mat-form-field>
   </div>
 
+  <mat-form-field appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [formGroup]="form" [rangePicker]="picker" disabled>
+      <input matStartDate formControlName="contractStartDate" placeholder="Start date">
+      <input matEndDate formControlName="contractEndDate" placeholder="End date">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+  </mat-form-field>
+
+<div class="form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+</div>
   <div class="form-end">
     <button mat-raised-button disabled [disabled]="form.invalid" color="warn" value="submit"> Done </button>
     <a routerLink="/user" class="mat-raised-button "> Cancel </a>

@@ -53,6 +53,10 @@ export class AddUserComponent implements OnInit {
       age: new FormControl('',[Validators.required, AgeValidator, Validators.pattern('[0-9]{2}')]),
       location: new FormControl('',[Validators.pattern('[a-zA-Z]*$'),Validators.minLength(2),Validators.maxLength(20)]),
       phone: new FormControl('',[Validators.pattern('[+()0-9]{8,15}')]),
+      contractStartDate: new FormControl('',[Validators.required,]),
+      contractEndDate: new FormControl('',[Validators.required]),
+      description: new FormControl('',[Validators.pattern('[a-zA-z][0-9]'), Validators.maxLength(20)])
+
       
 
     })
@@ -86,6 +90,15 @@ export class AddUserComponent implements OnInit {
   get phone(){
     return this.form.get('phone')
   } 
+  get contractStartDate(){
+    return this.form.get('contractStartDate')
+  }
+  get contractEndDate(){
+    return this.form.get('contractEndDate')
+  }
+  get description(){
+    return this.form.get('description')
+  }
 }
 export function AgeValidator(control: AbstractControl): { [key: string]: boolean } | null {
   if (control.value < 18) {
@@ -93,9 +106,3 @@ export function AgeValidator(control: AbstractControl): { [key: string]: boolean
   }
   return null;
 }
-// export class MyErrorStateMatcher implements ErrorStateMatcher {
-//   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-//     const isSubmitted = form && form.submitted;
-//     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-//   }
-// }

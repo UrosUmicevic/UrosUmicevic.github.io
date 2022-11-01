@@ -50,6 +50,10 @@ export class EditUserComponent implements OnInit {
       age: new FormControl('',[Validators.required, AgeValidator, Validators.pattern('[0-9]{2}')]),
       location: new FormControl('',[Validators.pattern('[a-zA-Z]*$'),Validators.minLength(2),Validators.maxLength(20)]),
       phone: new FormControl('',[Validators.pattern('[+()0-9]{10,15}')]),
+      contractStartDate: new FormControl('',[Validators.required]),
+      contractEndDate: new FormControl('',[Validators.required]),
+      description: new FormControl('', [Validators.maxLength(30)])
+
     });
 
     this.id_string = this.route.snapshot.paramMap.get('id');
@@ -62,6 +66,10 @@ export class EditUserComponent implements OnInit {
       this.currentUser.age = res.age;
       this.currentUser.location = res.location;
       this.currentUser.phone = res.phone;
+      this.currentUser.contractStartDate = res.contractStartDate;
+      this.currentUser.contractEndDate = res.contractEndDate;
+      this.currentUser.description = res.description;
+
 
       console.log(this.currentUser);
 
@@ -71,7 +79,12 @@ export class EditUserComponent implements OnInit {
       role: this.currentUser.role,
       age: this.currentUser.age,
       location: this.currentUser.location,
-      phone: this.currentUser.phone
+      phone: this.currentUser.phone,
+      contractStartDate: this.currentUser.contractStartDate,
+      contractEndDate: this.currentUser.contractEndDate,
+      description: this.currentUser.description,
+
+
     });
 
   
@@ -99,6 +112,16 @@ export class EditUserComponent implements OnInit {
     get phone(){
       return this.form.get('phone')
     }
+    get contractStartDate(){
+      return this.form.get('contractStartDate')
+    }
+    get contractEndDate(){
+      return this.form.get('contractEndDate')
+    }
+    get description(){
+      return this.form.get('description')
+    }
+
     }
     export function AgeValidator(control: AbstractControl): { [key: string]: boolean } | null {
       if (control.value < 18) {

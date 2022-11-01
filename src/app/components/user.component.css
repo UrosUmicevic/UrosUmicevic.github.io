@@ -4,6 +4,11 @@ table{
 .nav{
     text-align: center;
 }
-.button_1{
-    text-align: right;
+.button{
+    padding-top: 16px;
 }
+.mat-form-field {
+    padding-left: 10px; ;
+    font-size: 14px;
+    width: 25%;
+  }

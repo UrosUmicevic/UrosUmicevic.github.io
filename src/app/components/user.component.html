@@ -1,35 +1,69 @@
 <div class="nav">
     <h2>USERS</h2>
 </div>
+<div>
+    <form [formGroup]="formFilter" (submit)="applyDateFilter($event)">
+
+        <mat-form-field appearance="standard">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+          </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [formGroup]="formFilter" [rangePicker]="picker" disabled>
+              <input matStartDate formControlName="fromDate" placeholder="Start date">
+              <input matEndDate formControlName="toDate" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+          </mat-form-field>
+    <button class="button-form" mat-button color="primary" value="submit">Submit</button>
+    </form>
+</div>
 <div class="table">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange(sort)"
+        class="mat-elevation-z8">
         <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id"> Id </th>
             <td mat-cell *matCellDef="let element">{{element.id}}</td>
         </ng-container>
         <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name"> Name </th>
             <td mat-cell *matCellDef="let element">{{element.name}}</td>
         </ng-container>
         <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by email"> Email </th>
             <td mat-cell *matCellDef="let element">{{element.email}}</td>
         </ng-container>
         <ng-container matColumnDef="role">
-            <th mat-header-cell *matHeaderCellDef> Role </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by role"> Role </th>
             <td mat-cell *matCellDef="let element">{{element.role}}</td>
         </ng-container>
         <ng-container matColumnDef="age">
-            <th mat-header-cell *matHeaderCellDef> Age </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by age"> Age </th>
             <td mat-cell *matCellDef="let element">{{element.age}}</td>
         </ng-container>
         <ng-container matColumnDef="location">
-            <th mat-header-cell *matHeaderCellDef> Location </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by location"> Location
+            </th>
             <td mat-cell *matCellDef="let element">{{element.location}}</td>
         </ng-container>
         <ng-container matColumnDef="phone">
-            <th mat-header-cell *matHeaderCellDef> Phone </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by phone"> Phone </th>
             <td mat-cell *matCellDef="let element">{{element.phone}}</td>
+        </ng-container>
+        <ng-container matColumnDef="contractStartDate">
+            <th mat-header-cell *matHeaderCellDef> Start Date </th>
+            <td mat-cell *matCellDef="let element">{{element.contractStartDate | date }}</td>
+        </ng-container>
+        <ng-container matColumnDef="contractEndDate">
+            <th mat-header-cell *matHeaderCellDef> End Date </th>
+            <td mat-cell *matCellDef="let element">{{element.contractEndDate | date }}</td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let element">{{element.description}}</td>
         </ng-container>
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> </th>
@@ -38,6 +72,7 @@
                 <button mat-stroked-button color="warn" (click)="deleteUser(element.id)">Delete User</button>
             </td>
         </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

@@ -16,6 +16,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { EditUserComponent } from './components/edit-user.component';
 import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -39,8 +41,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCheckboxModule,
     MatSelectModule,
     MatNativeDateModule,
-
-    
+    MatDatepickerModule,
+    MatSortModule
 
   ],
   providers: [
