@@ -21,11 +21,11 @@ export class UserService {
 
   }
 
-  getUsers() {
+  getUsers(): Observable<User[]> {
     return this.http.get<User[]>('http://localhost:3000/user');
   }
 
-  getUserbyId(id: string | null | undefined) {
+  getUserbyId(id: string | null | undefined){
     return this.http.get<User>('http://localhost:3000/user/' + id);
   }
 

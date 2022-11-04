@@ -20,7 +20,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatSortModule } from '@angular/material/sort';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,8 +41,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatSelectModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatSortModule
-
+    MatSortModule,
   ],
   providers: [
   

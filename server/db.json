@@ -4,10 +4,13 @@
       "id": 3,
       "name": "Stefann",
       "email": "stefan@gmail.com",
-      "role": "",
+      "role": "Administrator",
       "age": "21",
       "location": "Belgrade",
-      "phone": "+381646610734"
+      "phone": "+381646610734",
+      "contractStartDate": "2022-10-31T23:00:00.000Z",
+      "contractEndDate": "2022-11-17T23:00:00.000Z",
+      "description": null
     },
     {
       "id": 5,
@@ -40,7 +43,10 @@
       "role": "",
       "age": "18",
       "location": "Belgrade",
-      "phone": "+381646610734"
+      "phone": "+381646610734",
+      "contractStartDate": "2022-10-31T23:00:00.000Z",
+      "contractEndDate": "2022-11-22T23:00:00.000Z",
+      "description": null
     },
     {
       "id": 8,

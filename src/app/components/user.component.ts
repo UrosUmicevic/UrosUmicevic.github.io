@@ -4,8 +4,9 @@ import { UserService } from '../services/user.service';
 import { MatSort, Sort, } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatTableDataSource } from '@angular/material/table';
-import { DatePipe } from '@angular/common';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+
 
 const ELEMENT_DATA: User[] = [];
 @Component({
@@ -18,26 +19,24 @@ export class UserComponent implements OnInit, AfterViewInit {
   users: User[] = [];
   id!: number;
   user!: User;
-
-
+ 
   displayedColumns: string[] = ['id', 'name', 'email', 'role', 'age', 'location', 'phone', 'contractStartDate','contractEndDate','description','actions'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   pipe!: DatePipe;
 
-  formFilter = new FormGroup({
-    fromDate: new FormControl(null, { validators: [Validators.required]}),
-    toDate: new FormControl(null, { validators: [Validators.required]})
+  
+  form = new FormGroup({
+    fromDate: new FormControl(),
+    toDate: new FormControl(),
   });
-   
 
+  get fromDate() { return this.form.get('fromDate')?.value; }
+  get toDate() { return this.form.get('toDate')?.value; }
 
   constructor(
     private userService: UserService,
-    private _liveAnnouncer: LiveAnnouncer) { 
-
-    }
-
-    
+    private _liveAnnouncer: LiveAnnouncer,)
+     {}
 
     @ViewChild(MatSort) sort!: MatSort;
 
@@ -45,12 +44,29 @@ export class UserComponent implements OnInit, AfterViewInit {
     this.userService.getUsers().subscribe((res) => {
       this.dataSource.data = res;
       console.log(res);
-    });;
+    });
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
+
+  applyDateFilter() {
+    this.pipe = new DatePipe('en');
+    this.dataSource.filterPredicate = (data, filter) =>{
+    if (this.fromDate && this.toDate) {
+      return data.contractEndDate >= this.fromDate && data.contractEndDate  <= this.toDate;        
+    } 
+    return true;     
+    }    
+    this.dataSource.filter = ''+Math.random();
+    console.log(this.dataSource);
+    console.log(this.fromDate);
+    console.log(this.toDate);
+    
+    
+  }
+  
 
   announceSortChange(sortState: Sort) {
     if (sortState.direction) {
@@ -59,33 +75,17 @@ export class UserComponent implements OnInit, AfterViewInit {
       this._liveAnnouncer.announce('Sorting cleared');
     }
   }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-    
   }
-  applyDateFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    console.log(this.formFilter);
-    
-   }
-
+  
   deleteUser(id: number) {
     this.userService.delete(id).subscribe(data => {
       console.log(data);
       location.reload();
     })
   }
-
-  deleteAllUsers(){
-      this.dataSource.data = [];
-      location.reload();
-  }
-
-  onRefresh(){
-    location.reload();
-  }
-
 }
 
