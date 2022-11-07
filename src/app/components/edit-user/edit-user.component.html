@@ -1,8 +1,8 @@
 <div class="nav">
-  <h1>Add User</h1>
+  <h1>Edit User</h1>
 </div>
 
-<form [formGroup]="form" (ngSubmit)="addNewUser()">
+<form [formGroup]="form" >
 
   <div class="form">
     <mat-form-field class="example-full-width" appearance="fill">
@@ -58,18 +58,13 @@
   </div>
 
   <div class="form">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Location: </mat-label>
-      <input matInput placeholder="Location" formControlName="location">
-      <mat-error *ngIf="location?.errors?.['pattern']">
-        Must be real location
-     </mat-error>
-     <mat-error *ngIf="location?.errors?.['maxlength']">
-      Too many characters.
-     </mat-error>
-     <mat-error *ngIf="location?.errors?.['minlength']">
-       Enter valid location.
-     </mat-error>
+    <mat-form-field appearance="fill">
+      <mat-label>Location:</mat-label>
+      <mat-select formControlName="location" >
+        <mat-option *ngFor="let location of locations" [value]="location.value">
+          {{location.viewValue}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
 
@@ -91,19 +86,28 @@
     </mat-date-range-input>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker touchUi disabled="false"></mat-date-range-picker>
-  </mat-form-field>
-
-<div class="form">
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Leave a comment</mat-label>
-    <textarea matInput formControlName="description"></textarea>
-    <mat-error *ngIf="description?.errors?.['maxlength']">
-      Limited to 30 characters.
+    <mat-error *ngIf="contractStartDate?.errors?.['required']">
+      Pick a date.
+    </mat-error>
+    <mat-error *ngIf="contractEndDate?.errors?.['required']">
+      Pick a date.
     </mat-error>
   </mat-form-field>
-</div>
+  
+
+  <div class="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Leave a comment</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+      <mat-error *ngIf="description?.errors?.['maxlength']">
+        Limited to 30 characters.
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+
   <div class="form-end">
-    <button mat-raised-button disabled [disabled]="form.invalid" color="warn" value="submit"> Done </button>
+    <button mat-raised-button disabled [disabled]="form.invalid" color="warn" (click)="updateUser()"> Update </button>
     <a routerLink="/user" class="mat-raised-button "> Cancel </a>
   </div>
 

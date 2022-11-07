@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import { UserService } from '../services/user.service';
-import { User } from '../modules/user';
+import { UserService } from '../../services/user.service';
+import { User } from '../../modules/user';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,10 +11,16 @@ interface Role {
   value: string;
   viewValue: string;
 }
+
+interface Location{
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.css']
+  templateUrl: 'edit-user.component.html',
+  styleUrls: ['edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
   
@@ -23,6 +29,12 @@ export class EditUserComponent implements OnInit {
     {value: 'QA', viewValue: 'QA'},
     {value: 'Developer', viewValue: 'Developer'},
     {value: 'Customer', viewValue: 'Customer'},
+  ];
+
+  locations: Location[] = [
+    {value: 'Belgrade', viewValue: 'Belgrade'},
+    {value: 'Novi Sad', viewValue: 'Novi Sad'},
+    {value: 'Nis', viewValue: 'Nis'}
   ];
 
   id_string: string | null | undefined;
@@ -46,9 +58,9 @@ export class EditUserComponent implements OnInit {
       id: new FormControl(),
       name: new FormControl('',[Validators.required,Validators.pattern ('[a-zA-Z]*$'), Validators.maxLength(10)]),
       email: new FormControl('',[Validators.required, Validators.email]),
-      role: new FormControl(),
+      role: new FormControl('',[Validators.required]),
       age: new FormControl('',[Validators.required, AgeValidator, Validators.pattern('[0-9]{2}')]),
-      location: new FormControl('',[Validators.pattern('[a-zA-Z]*$'),Validators.minLength(2),Validators.maxLength(20)]),
+      location: new FormControl('',[Validators.pattern('[a-zA-Z]*$'), Validators.required, Validators.minLength(2),Validators.maxLength(20)]),
       phone: new FormControl('',[Validators.pattern('[+()0-9]{10,15}')]),
       contractStartDate: new FormControl('',[Validators.required]),
       contractEndDate: new FormControl('',[Validators.required]),

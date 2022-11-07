@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Route } from '@angular/router';
-import { UserComponent } from './user.component';
-import { UserService } from '../services/user.service';
+import { UserComponent } from '../user/user.component';
+import { UserService } from 'src/app/services/user.service';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../modules/user';
-import { FormBuilder, FormControl, FormGroup, Validators, FormGroupDirective, NgForm, } from '@angular/forms';
+import { User } from 'src/app/modules/user';
+import { FormBuilder, FormControl, FormGroup, Validators, NgForm, } from '@angular/forms';
 import { Input } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
@@ -14,10 +14,15 @@ interface Role {
   viewValue: string;
 }
 
+interface Location{
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css']
+  templateUrl: 'add-user.component.html',
+  styleUrls: ['add-user.component.css']
 })
 
 
@@ -30,13 +35,19 @@ export class AddUserComponent implements OnInit {
     {value: 'Customer', viewValue: 'Customer'},
   ];
 
+  locations: Location[] = [
+    {value: 'Belgrade', viewValue: 'Belgrade'},
+    {value: 'Novi Sad', viewValue: 'Novi Sad'},
+    {value: 'Nis', viewValue: 'Nis'}
+  ];
+
   submitted = false;
   form!: FormGroup;
   users: User[] = []
   user!: User;
   id!: number;
-  // matcher = new MyErrorStateMatcher();
 
+  
   constructor(
     private userService: UserService,
     private formbuilder: FormBuilder,
@@ -49,21 +60,15 @@ export class AddUserComponent implements OnInit {
       id: new FormControl(''),
       name: new FormControl('',[Validators.required, Validators.pattern ('[a-zA-Z]*$'), Validators.maxLength(10)]),
       email: new FormControl('',[Validators.required, Validators.email]),
-      role: new FormControl(''),
+      role: new FormControl('',[Validators.required]),
       age: new FormControl('',[Validators.required, AgeValidator, Validators.pattern('[0-9]{2}')]),
-      location: new FormControl('',[Validators.pattern('[a-zA-Z]*$'),Validators.minLength(2),Validators.maxLength(20)]),
+      location: new FormControl('',[Validators.pattern('[a-zA-Z]*$'), Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       phone: new FormControl('',[Validators.pattern('[+()0-9]{8,15}')]),
       contractStartDate: new FormControl('',[Validators.required,]),
       contractEndDate: new FormControl('',[Validators.required]),
       description: new FormControl('', [Validators.maxLength(30)])
-
-      
-
     })
-    
-
   }
-  get f() { return this.form.controls; }
 
   addNewUser() {
     this.userService.addUser(this.form.value).subscribe((res) => {

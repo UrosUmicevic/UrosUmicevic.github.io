@@ -1,0 +1,22 @@
+<div class="reg">
+<div class="nav">
+    <h2>Register User</h2>
+</div>
+<div class="log">
+    <form [formGroup]="registerForm" #formDirective="ngForm" (ngSubmit)="formSubmit(registerForm, formDirective)" >
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Username: </mat-label>
+            <input matInput type="text" formControlName="username">
+          </mat-form-field>
+          <div>
+            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Password: </mat-label>
+            <input matInput type="password" formControlName="password">
+          </mat-form-field>
+        </div>
+        <div class="button">
+            <button mat-stroked-button color="primary" value="submit">Register</button>
+        </div>
+    </form>
+</div>
+</div>

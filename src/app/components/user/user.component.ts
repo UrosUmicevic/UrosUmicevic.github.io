@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild} from '@angular/core';
-import { User } from '../modules/user';
-import { UserService } from '../services/user.service';
+import { User } from '../../modules/user';
+import { UserService } from '../../services/user.service';
 import { MatSort, Sort, } from '@angular/material/sort';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,8 +11,8 @@ import { DatePipe } from '@angular/common';
 const ELEMENT_DATA: User[] = [];
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  templateUrl: 'user.component.html',
+  styleUrls: ['user.component.css']
 })
 export class UserComponent implements OnInit, AfterViewInit {
 
@@ -52,21 +52,24 @@ export class UserComponent implements OnInit, AfterViewInit {
   }
 
   applyDateFilter() {
+    
     this.pipe = new DatePipe('en');
     this.dataSource.filterPredicate = (data, filter) =>{
+    var ed= new Date (data.contractEndDate); 
+      
     if (this.fromDate && this.toDate) {
-      return data.contractEndDate >= this.fromDate && data.contractEndDate  <= this.toDate;        
+      return ed >= this.fromDate && ed <= this.toDate;     
     } 
-    return true;     
-    }    
+    else if(this.fromDate){
+      return ed >= this.fromDate;
+    }
+    else (this.toDate);{
+      return ed <= this.toDate;
+    }   
+  }    
+    
     this.dataSource.filter = ''+Math.random();
-    console.log(this.dataSource);
-    console.log(this.fromDate);
-    console.log(this.toDate);
-    
-    
   }
-  
 
   announceSortChange(sortState: Sort) {
     if (sortState.direction) {
