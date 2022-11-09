@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router'
 import { environment } from 'src/environments/environment';
+import { UserProfile } from '../modules/userProfile';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class UserService {
 
   users: User[] = [];
-  url = 'http://localhost:3000/'
+  userProfiles: UserProfile[] = [];
   jsonDataResult: any;
   private userSubject!: BehaviorSubject<User>;
 
@@ -34,6 +35,10 @@ export class UserService {
   addUser(user: User) {
    return this.http.post('http://localhost:3000/user', user);
   }
+
+  addUserProfile(userProfile: UserProfile) {
+    return this.http.post('http://localhost:3000/userProfile', userProfile);
+   }
 
   delete(id: number) {
     const deleteEndpoint = 'http://localhost:3000/user/' + id;

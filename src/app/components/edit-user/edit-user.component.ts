@@ -60,8 +60,8 @@ export class EditUserComponent implements OnInit {
       email: new FormControl('',[Validators.required, Validators.email]),
       role: new FormControl('',[Validators.required]),
       age: new FormControl('',[Validators.required, AgeValidator, Validators.pattern('[0-9]{2}')]),
-      location: new FormControl('',[Validators.pattern('[a-zA-Z]*$'), Validators.required, Validators.minLength(2),Validators.maxLength(20)]),
-      phone: new FormControl('',[Validators.pattern('[+()0-9]{10,15}')]),
+      location: new FormControl('',),
+      phone: new FormControl('',[Validators.pattern('[+()0-9]{8,15}')]),
       contractStartDate: new FormControl('',[Validators.required]),
       contractEndDate: new FormControl('',[Validators.required]),
       description: new FormControl('', [Validators.maxLength(30)])

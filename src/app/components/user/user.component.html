@@ -2,14 +2,12 @@
     <h2>USERS</h2>
 </div>
 <div>
-    <mat-form-field appearance="standard">
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" #input>
-  </mat-form-field>
-</div>
-<div>
     <form class="date-block" [formGroup]="form" (submit)="applyDateFilter()">
         <div class="date-block__list">
+            <mat-form-field appearance="standard">
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" #input>
+              </mat-form-field>
             <mat-form-field>
                 <input matInput [matDatepicker]="fromDate" placeholder="From date" formControlName="fromDate" >
                 <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
@@ -20,7 +18,7 @@
                 <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
                 <mat-datepicker #toDate touchUi></mat-datepicker>
             </mat-form-field>
-            <button mat-button color="primary" value="submit">Submit</button>
+            <button mat-button disabled [disabled]="form.invalid" color="primary" value="submit">Submit</button>
         </div>
     </form>
 </div>

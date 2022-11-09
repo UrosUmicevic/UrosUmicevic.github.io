@@ -58,11 +58,11 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       id: new FormControl(''),
-      name: new FormControl('',[Validators.required, Validators.pattern ('[a-zA-Z]*$'), Validators.maxLength(10)]),
+      name: new FormControl('',[Validators.required, Validators.pattern ('[a-zA-Z]*$/'), Validators.maxLength(15)]),
       email: new FormControl('',[Validators.required, Validators.email]),
       role: new FormControl('',[Validators.required]),
       age: new FormControl('',[Validators.required, AgeValidator, Validators.pattern('[0-9]{2}')]),
-      location: new FormControl('',[Validators.pattern('[a-zA-Z]*$'), Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      location: new FormControl('',),
       phone: new FormControl('',[Validators.pattern('[+()0-9]{8,15}')]),
       contractStartDate: new FormControl('',[Validators.required,]),
       contractEndDate: new FormControl('',[Validators.required]),
@@ -71,7 +71,7 @@ export class AddUserComponent implements OnInit {
   }
 
   addNewUser() {
-    this.userService.addUser(this.form.value).subscribe((res) => {
+    this.userService.addUser(this.form.value).subscribe((res) => { 
       console.log(res);
       this.router.navigate(['../user'], { relativeTo: this.route });
     })

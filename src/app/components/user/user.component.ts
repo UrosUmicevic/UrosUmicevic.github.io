@@ -6,6 +6,7 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { from } from 'rxjs';
 
 
 const ELEMENT_DATA: User[] = [];
@@ -67,8 +68,12 @@ export class UserComponent implements OnInit, AfterViewInit {
       return ed <= this.toDate;
     }   
   }    
+    console.log('test');
     
-    this.dataSource.filter = ''+Math.random();
+    this.dataSource.filter = ''+ Math.random();
+    console.log(this.dataSource.filter);
+    console.log(this.dataSource);
+    
   }
 
   announceSortChange(sortState: Sort) {
@@ -82,6 +87,10 @@ export class UserComponent implements OnInit, AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    
+    console.log(this.dataSource.filter);
+    console.log(this.dataSource);
+    
   }
   
   deleteUser(id: number) {

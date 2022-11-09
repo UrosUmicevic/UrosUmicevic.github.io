@@ -95,6 +95,50 @@
       "contractStartDate": "2022-11-03T23:00:00.000Z",
       "contractEndDate": "2022-11-07T23:00:00.000Z",
       "description": ""
+    },
+    {
+      "id": 13,
+      "name": "alek",
+      "email": "acac@dirako.bg",
+      "role": "Customer",
+      "age": "31",
+      "location": "Belgrade",
+      "phone": "0631234567",
+      "contractStartDate": "2022-11-07T23:00:00.000Z",
+      "contractEndDate": "2022-11-08T23:00:00.000Z",
+      "description": "molimo vas da obradite zahtev"
+    },
+    {
+      "id": 15,
+      "name": "VasaS",
+      "email": "1@no.c",
+      "role": "QA",
+      "age": "24",
+      "location": "Belgrade",
+      "phone": "063000002",
+      "contractStartDate": "2022-10-31T23:00:00.000Z",
+      "contractEndDate": "2022-11-14T23:00:00.000Z",
+      "description": "da"
+    }
+  ],
+  "userProfile": [
+    {
+      "username": "Uros",
+      "password": "uros98",
+      "confirmPassword": "uros98",
+      "id": 1
+    },
+    {
+      "username": "uros",
+      "password": "111777",
+      "confirmPassword": "111kkkk",
+      "id": 2
+    },
+    {
+      "username": "Ognjen",
+      "password": "1234455",
+      "confirmPassword": "2222222",
+      "id": 3
     }
   ]
 }
