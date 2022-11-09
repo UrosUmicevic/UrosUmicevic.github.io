@@ -25,15 +25,15 @@ export class RegisterComponent implements OnInit {
     this.registerForm = new FormGroup({
       username: new FormControl('',[Validators.required, Validators.pattern ('[a-zA-Z]*$'), Validators.maxLength(15)]),
       password: new FormControl('',[Validators.required, Validators.minLength(6)]),
-      confirmPassword: new FormControl('',[Validators.required, Validators.minLength(6)]),
+      confirmPassword: new FormControl('',[Validators.required]),
   },
   {
-    validators:this.MustMatch('password','confirmPassword')
+    validators:this.mustMatch('password','confirmPassword')
   }
   );
 }
 
-MustMatch(password: string, confirmPassword: string) {
+mustMatch(password: string, confirmPassword: string) {
   return(formGroup: AbstractControl): ValidationErrors | null=>{
     const passwordControl = formGroup.get(password);
     const confirmPasswordControl = formGroup.get(confirmPassword);
@@ -42,13 +42,19 @@ MustMatch(password: string, confirmPassword: string) {
       return null;
     }
     if (
-      confirmPasswordControl.errors &&
+      confirmPasswordControl?.errors &&
       !confirmPasswordControl.errors['passwordMismatch']
     ) {
       return null;
     }
-  
+    if (passwordControl?.value !== confirmPasswordControl?.value) {
+      confirmPasswordControl?.setErrors({ passwordMismatch: true });
+      return { passwordMismatch: true };
+    } else {
+      confirmPasswordControl?.setErrors(null);
+      return null;
     }
+  };
   }
 addNewUser() {
   this.userService.addUserProfile(this.registerForm.value).subscribe((res) => { 

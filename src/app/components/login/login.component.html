@@ -6,16 +6,24 @@
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Username: </mat-label>
             <input matInput type="text" formControlName="username">
+            <mat-error *ngIf="username?.errors?.['required']">
+                Name is required!
+              </mat-error>
           </mat-form-field>
           <div>
             <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Password: </mat-label>
             <input matInput type="password" formControlName="password">
+            <mat-error *ngIf="password?.errors?.['required']">
+                Password required!
+              </mat-error>
           </mat-form-field>
         </div>
         <div class="button">
-            <button mat-stroked-button color="primary" value="submit">Login</button>
-            <a mat-raised-button routerLink="../register" color="warn">Register</a>
+            <button mat-stroked-button color="primary" (click)="login()">Login</button>
         </div>
+        <div class="text-center sign-up">
+            Don`t have an account ? <a mat-stroked-button color="primary" routerLink="../register">Register</a>
+          </div>
     </form>
 </div>

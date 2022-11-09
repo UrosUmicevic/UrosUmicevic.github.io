@@ -123,22 +123,34 @@
   ],
   "userProfile": [
     {
-      "username": "Uros",
-      "password": "uros98",
-      "confirmPassword": "uros98",
+      "username": "ogi",
+      "password": "ogiogi",
+      "confirmPassword": "ogiogi",
       "id": 1
     },
     {
-      "username": "uros",
-      "password": "111777",
-      "confirmPassword": "111kkkk",
+      "username": "ogio",
+      "password": "testte",
+      "confirmPassword": "testte",
       "id": 2
     },
     {
-      "username": "Ognjen",
-      "password": "1234455",
-      "confirmPassword": "2222222",
+      "username": "ogioo",
+      "password": "     {       \"username\": \"ogi\",       \"password\": \"ogiogi\",       \"confirmPassword\": \"ogiogi\",       \"id\": 1     },",
+      "confirmPassword": "     {       \"username\": \"ogi\",       \"password\": \"ogiogi\",       \"confirmPassword\": \"ogiogi\",       \"id\": 1     },",
       "id": 3
+    },
+    {
+      "username": "ogiooo",
+      "password": "     {       \"username\": \"ogi\",       \"password\": \"ogiogi\",       \"confirmPassword\": \"ogiogi\",       \"id\": 1     },",
+      "confirmPassword": "     {       \"username\": \"ogi\",       \"password\": \"ogiogi\",       \"confirmPassword\": \"ogiogi\",       \"id\": 1     },",
+      "id": 4
+    },
+    {
+      "username": "jank",
+      "password": "123123",
+      "confirmPassword": "123123",
+      "id": 5
     }
   ]
 }

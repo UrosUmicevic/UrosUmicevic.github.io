@@ -15,13 +15,20 @@ export class UserService {
   users: User[] = [];
   userProfiles: UserProfile[] = [];
   jsonDataResult: any;
-  private userSubject!: BehaviorSubject<User>;
+
+  private userDataSource = new BehaviorSubject({username : '', password : ''});
+  currentUserData = this.userDataSource.asObservable();
+ 
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute) {
 
+  }
+
+  changeData(newUserData: { username: string; password: string; }) {
+    this.userDataSource.next(newUserData)
   }
 
   getUsers(): Observable<User[]> {
@@ -40,6 +47,14 @@ export class UserService {
     return this.http.post('http://localhost:3000/userProfile', userProfile);
    }
 
+  getUserProfileById(id: string){
+    return this.http.get<UserProfile>('http://localhost:3000/userProfile/'+ id)
+  }
+
+  getAllUserProfiles(): Observable<UserProfile[]>{
+    return this.http.get<UserProfile[]>('http://localhost:3000/userProfile')
+  }
+
   delete(id: number) {
     const deleteEndpoint = 'http://localhost:3000/user/' + id;
     return this.http.delete(deleteEndpoint);
@@ -57,13 +72,4 @@ export class UserService {
     const body = res.json();
     return body || {};
   }
-
-  login(username: any, password: any) {
-    return this.http.post<User>('http://localhost:3000/user/', { username, password })
-        .pipe(map((user: any) => {
-            localStorage.setItem('user', JSON.stringify(user));
-            this.userSubject.next(user);
-            return user;
-        }));
-}
 }
