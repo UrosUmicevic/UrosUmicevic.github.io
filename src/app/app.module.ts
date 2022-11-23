@@ -19,7 +19,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatSortModule } from '@angular/material/sort';
 import { LoginComponent } from './components/login/login.component';
+import {MatIconModule} from '@angular/material/icon';
 import { RegisterComponent } from './components/register/register.component';
+
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import { RegisterComponent } from './components/register/register.component';
     MatNativeDateModule,
     MatDatepickerModule,
     MatSortModule,
+    MatIconModule,
 
   ],
   providers: [

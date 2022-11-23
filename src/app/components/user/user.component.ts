@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { from } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 const ELEMENT_DATA: User[] = [];
@@ -36,7 +37,8 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   constructor(
     private userService: UserService,
-    private _liveAnnouncer: LiveAnnouncer,)
+    private _liveAnnouncer: LiveAnnouncer,
+    private router: Router)
      {}
 
     @ViewChild(MatSort) sort!: MatSort;
@@ -67,9 +69,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     else (this.toDate);{
       return ed <= this.toDate;
     }   
-  }    
-    console.log('test');
-    
+  }        
     this.dataSource.filter = ''+ Math.random();
     console.log(this.dataSource.filter);
     console.log(this.dataSource);
@@ -98,6 +98,12 @@ export class UserComponent implements OnInit, AfterViewInit {
       console.log(data);
       location.reload();
     })
+  }
+
+  logoutUserProfile(){
+    this.userService.logout();
+    this.router.navigate(['../login']);
+
   }
 }
 

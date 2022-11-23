@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
-      username: new FormControl('',[Validators.required, Validators.pattern ('[a-zA-Z]*$'), Validators.maxLength(15)]),
+      username: new FormControl('',[Validators.required, Validators.pattern ('[0-9a-zA-Z]*$'), Validators.maxLength(15)]),
       password: new FormControl('',[Validators.required, Validators.minLength(6)]),
       confirmPassword: new FormControl('',[Validators.required]),
   },
@@ -56,7 +56,8 @@ mustMatch(password: string, confirmPassword: string) {
     }
   };
   }
-addNewUser() {
+
+addNewUserProfile() {
   this.userService.addUserProfile(this.registerForm.value).subscribe((res) => { 
     console.log(res);
     this.router.navigate(['../login'], { relativeTo: this.route });
@@ -74,10 +75,4 @@ get confirmPassword(){
   return this.registerForm.get('confirmPassword')
 }
 
-  // formSubmit( formData: FormGroup, loginDirective: FormGroupDirective){
-  //   const username = formData.value.username;
-  //   const password = formData.value.password;
-  //   const confirmPassword = formData.value.confirmPassword;
-  //   this.router.navigate(['../login'], { relativeTo: this.route });
-  // }
 }

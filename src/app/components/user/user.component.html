@@ -1,5 +1,6 @@
-<div class="nav">
-    <h2>USERS</h2>
+<div class="top">
+    <h2 class="nav">USERS</h2>
+  <button mat-stroked-button class="logout" color="warn" (click)="logoutUserProfile()">Logout</button>
 </div>
 <div>
     <form class="date-block" [formGroup]="form" (submit)="applyDateFilter()">

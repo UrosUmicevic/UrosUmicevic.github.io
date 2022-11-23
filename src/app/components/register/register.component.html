@@ -3,12 +3,12 @@
     <h2>Register User</h2>
 </div>
 <div class="log">
-    <form [formGroup]="registerForm" #formDirective="ngForm" (ngSubmit)="addNewUser()">
+    <form [formGroup]="registerForm" #formDirective="ngForm" (ngSubmit)="addNewUserProfile()">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Username: </mat-label>
             <input matInput type="text" name="username" formControlName="username">
             <mat-error *ngIf="username?.errors?.['pattern']">
-                Name includes only characters.
+                Name includes only characters and numbers!
               </mat-error>
               <mat-error *ngIf="username?.errors?.['required']">
                 Name is required!
@@ -37,6 +37,9 @@
         </div>
         <div class="button">
             <button mat-stroked-button disabled [disabled]="registerForm.invalid" color="primary" value="submit">Register</button>
+        </div>
+        <div class="text-center login">
+          Already have account? <a mat-stroked-button color="primary" routerLink="../login">Login</a>
         </div>
     </form>
 </div>
