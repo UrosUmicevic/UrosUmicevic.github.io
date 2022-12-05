@@ -5,3 +5,17 @@
    
     text-align: center;
 }
+#spinner {
+	-webkit-animation: frames 1s infinite linear;
+	animation: frames 1s infinite linear;
+	background: transparent;
+	border: 1.75vw solid #FFF;
+	border-radius: 100%;
+	border-top-color: #DF691A;
+	width: 20vw;
+	height: 20vw;
+	opacity: .6;
+	padding: 0;
+	position: absolute;
+	z-index: 999;
+}

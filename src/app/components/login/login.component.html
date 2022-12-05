@@ -26,12 +26,13 @@
           </mat-form-field>
         </div>
         <div class="button">
-            <button [disabled]="loading" mat-stroked-button color="primary" (click)="isLoginOk(loginForm)">
+            <button [disabled]="loading" mat-stroked-button color="primary" (click)="isLoginOk(loginForm)" (click)="toggleLoading()">
                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                Login</button>
+                Login
+                </button>
         </div>
         <div class="text-center sign-up">
             Don`t have an account ? <a mat-stroked-button color="primary" routerLink="../register">Register</a>
           </div>
     </form>
-</div>
+  </div>

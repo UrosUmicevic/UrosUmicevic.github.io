@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { User } from '../modules/user';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router'
 import { environment } from 'src/environments/environment';
 import { UserProfile } from '../modules/userProfile';
+import { AbstractControl } from '@angular/forms';
 
 
 @Injectable({
@@ -15,17 +16,13 @@ export class UserService {
   users: User[] = [];
   userProfiles: UserProfile[] = [];
   jsonDataResult: any;
-
-  private userSubject!: BehaviorSubject<UserProfile>;
-  public userProfile!: Observable<UserProfile>;
+  private url = 'http://localhost:3000/userProfile/'
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute) {
 
-    this.userSubject = new BehaviorSubject<UserProfile>(JSON.parse(localStorage.getItem('username') || '{}'));
-    this.userProfile = this.userSubject.asObservable();
   }
 
   getUsers(): Observable<User[]> {
@@ -48,8 +45,8 @@ export class UserService {
     return this.http.get<UserProfile>('http://localhost:3000/userProfile/' + id)
   }
 
-  getAllUserProfiles(): Observable<UserProfile[]> {
-    return this.http.get<UserProfile[]>('http://localhost:3000/userProfile/')
+  getAllUserProfiles() {
+    return this.http.get<any[]>('http://localhost:3000/userProfile/')
   }
 
   delete(id: number) {
@@ -66,16 +63,15 @@ export class UserService {
   }
 
   login() {
-    return this.http.get<any>('http://localhost:3000/userProfile').pipe(map(user => {
-      localStorage.setItem('username', JSON.stringify(user));
-      this.userSubject.next(user);
-      console.log(user);
-      return user;
-    }))
+    return this.http.get<any>('http://localhost:3000/userProfile')
   }
 
   logout() {
-   localStorage.removeItem('username');
+    localStorage.removeItem('UserProfile');
+  }
+
+  checkUsername(username: any) {
+    return this.http.get<any[]>('http://localhost:3000/userProfile/'+ username)
   }
 
   public extractData(res: Response) {

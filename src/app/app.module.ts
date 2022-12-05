@@ -21,6 +21,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { LoginComponent } from './components/login/login.component';
 import {MatIconModule} from '@angular/material/icon';
 import { RegisterComponent } from './components/register/register.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+
 
 
 
@@ -32,6 +36,7 @@ import { RegisterComponent } from './components/register/register.component';
     EditUserComponent,
     LoginComponent,
     RegisterComponent,
+    SnackBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +54,8 @@ import { RegisterComponent } from './components/register/register.component';
     MatDatepickerModule,
     MatSortModule,
     MatIconModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule
 
   ],
   providers: [

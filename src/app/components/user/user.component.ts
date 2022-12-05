@@ -21,6 +21,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   users: User[] = [];
   id!: number;
   user!: User;
+  userDisplayName!: any;
  
   displayedColumns: string[] = ['id', 'name', 'email', 'role', 'age', 'location', 'phone', 'contractStartDate','contractEndDate','description','actions'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -48,6 +49,8 @@ export class UserComponent implements OnInit, AfterViewInit {
       this.dataSource.data = res;
       console.log(res);
     });
+
+    this.userDisplayName = localStorage.getItem('username')
   }
 
   ngAfterViewInit() {

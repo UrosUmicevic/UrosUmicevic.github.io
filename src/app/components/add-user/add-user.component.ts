@@ -58,7 +58,7 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       id: new FormControl(''),
-      name: new FormControl('',[Validators.required, Validators.pattern ('[a-zA-Z]*$/'), Validators.maxLength(15)]),
+      name: new FormControl('',[Validators.required,Validators.pattern ('[a-zA-Z]*$'), Validators.maxLength(20)]),
       email: new FormControl('',[Validators.required, Validators.email]),
       role: new FormControl('',[Validators.required]),
       age: new FormControl('',[Validators.required, AgeValidator, Validators.pattern('[0-9]{2}')]),

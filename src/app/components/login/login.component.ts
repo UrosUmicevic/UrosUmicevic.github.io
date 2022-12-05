@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { ReturnStatement } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { ResourceLoader, ReturnStatement } from '@angular/compiler';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/modules/user';
 import { UserProfile } from 'src/app/modules/userProfile';
 import { UserService } from 'src/app/services/user.service';
+import { MatSnackBar, MatSnackBarConfig, MatSnackBarRef } from '@angular/material/snack-bar';
+import { RegisterComponent } from '../register/register.component';
+import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-login',
@@ -14,17 +16,26 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
+  message: string = 'User not found'
   loginForm!: FormGroup;
   loading = false;
   submitted = false;
   userData: any;
+  isLoading = false;
+  durationInSeconds = 5;
 
+  toggleLoading = () => {
+    this.isLoading = true;
+
+    this.wait(40000).then( () => this.isLoading = false );
+  };
 
   constructor(
     private userService: UserService,
     private router: Router,
     private route: ActivatedRoute,
     private http: HttpClient,
+    public snackBar: MatSnackBar
     ) { }
 
   ngOnInit(): void {
@@ -45,24 +56,6 @@ export class LoginComponent implements OnInit {
     const password = formData.value.password;
   }
 
-  login(){
-    this.submitted = true;
-
-    if(this.loginForm.invalid){
-      return;
-    }
-    let userProfile = new UserProfile();
-    
-    this.loading = true;    
-
-    // if(this.isLoginOk(this.loginForm)){
-    //   this.router.navigate(['../user'], { relativeTo: this.route });
-    // }
-    // else {
-    //   return;
-    // }
-  } 
-
   isLoginOk(loginForm: FormGroup){
     this.userService.login().subscribe(res=>{
       const user = res.find((a:any)=>{
@@ -70,32 +63,28 @@ export class LoginComponent implements OnInit {
       });
 
       if(user){
-        alert('You have succesfully logged in!');
+        localStorage.setItem('UserProfile',JSON.stringify(user));
+        this.snackBar.openFromComponent(SnackBarComponent, {
+          duration: this.durationInSeconds * 300,
+        });
         this.loginForm.reset();
         this.router.navigate(['../user']), { relativeTo: this.route }
       }
       else{
-        alert('User not found');
+        this.snackBar.open(this.message);
         this.router.navigate(['login']);
       }
     });
   }
 
-  // isLoginOk(): boolean{
-  //   let userProfile : UserProfile[] = [];
-  //   this.userService.getAllUserProfiles().subscribe(result => {
-  //     userProfile = result;
-  //   });
+  load() : void {
+    this.isLoading = true;
+    setTimeout( () => this.isLoading = false, 2000 );
+  }
+  async wait(ms: number): Promise<void> {
+		return new Promise<void>( resolve => setTimeout( resolve, ms) );
+	}
 
-  //   for (let index = 0; index < userProfile.length; index++) {
-  //     const username = userProfile[index].username;
-  //     console.log(userProfile);
-    
-  //     if(userProfile[index].username == 'uros') {
-  //       this.loginForm.get('password')?.value == userProfile.password;
-  //     }
-  //     }
-  //   }
   get username(){
     return this.loginForm.get('username')
   }
