@@ -1,76 +1,17 @@
 {
   "user": [
     {
-      "id": 3,
-      "name": "hghgffhg",
-      "email": "stefan@gmail.com",
-      "role": "Administrator",
-      "age": "21",
-      "location": "Belgrade",
-      "phone": "+381646610734",
-      "contractStartDate": "2022-10-31T23:00:00.000Z",
-      "contractEndDate": "2022-11-17T23:00:00.000Z",
-      "description": "yuy"
-    },
-    {
-      "id": 5,
-      "name": "Aleksandar",
-      "email": "umicevic.uros998@gmail.com",
-      "role": "Customer",
-      "age": "19",
-      "location": "Belgrade",
-      "phone": "+3816452179080",
-      "contractStartDate": "2022-11-13T23:00:00.000Z",
-      "contractEndDate": "2022-11-24T23:00:00.000Z",
-      "description": null
-    },
-    {
-      "id": 6,
-      "name": "Uros",
-      "email": "umicevic.uros998@gmail.com",
+      "id": 1,
+      "name": "uros",
+      "email": "uros@gmail.com",
       "role": "QA",
-      "age": "18",
-      "location": "Belgrade",
-      "phone": "+381646610734",
-      "contractStartDate": "2022-11-07T23:00:00.000Z",
-      "contractEndDate": "2022-11-22T23:00:00.000Z",
-      "description": null
-    },
-    {
-      "id": 7,
-      "name": "Urosuros",
-      "email": "umicevic.uros998@gmail.com",
-      "role": "",
-      "age": "18",
-      "location": "Belgrade",
-      "phone": "+381646610734",
-      "contractStartDate": "2022-10-31T23:00:00.000Z",
-      "contractEndDate": "2022-11-22T23:00:00.000Z",
-      "description": null
-    },
-    {
-      "id": 8,
-      "name": "Uros",
-      "email": "pejcinovic.ognjen@gmail.com",
-      "role": "Developer",
-      "age": "23",
-      "location": "Belgrade",
-      "phone": "+381646610734",
-      "contractStartDate": "2022-08-15T22:00:00.000Z",
-      "contractEndDate": "2022-10-12T22:00:00.000Z",
-      "description": ""
-    },
-    {
-      "id": 10,
-      "name": "aaaaa",
-      "email": "aaa@aaa",
-      "role": "QA",
-      "age": "33",
-      "location": "Belgrade",
-      "phone": "+381646610734",
-      "contractStartDate": "2021-10-18T22:00:00.000Z",
-      "contractEndDate": "2023-11-14T23:00:00.000Z",
-      "description": null
+      "age": "22",
+      "location": "Novi Sad",
+      "phone": "2222222222",
+      "contractStartDate": "2022-12-18T23:00:00.000Z",
+      "contractEndDate": "2022-12-21T23:00:00.000Z",
+      "description": "",
+      "createdBy": "uros"
     }
   ],
   "userProfile": [
@@ -91,84 +32,6 @@
       "password": "uros123",
       "confirmPassword": "uros123",
       "id": 3
-    },
-    {
-      "username": "uros",
-      "password": "sssssss",
-      "confirmPassword": "sssssss",
-      "id": 4
-    },
-    {
-      "username": "uros",
-      "password": "uros12345",
-      "confirmPassword": "uros12345",
-      "id": 5
-    },
-    {
-      "username": "uros",
-      "password": "uros12345",
-      "confirmPassword": "uros12345",
-      "id": 6
-    },
-    {
-      "username": "uros",
-      "password": "uros12345",
-      "confirmPassword": "uros12345",
-      "id": 7
-    },
-    {
-      "username": "uros",
-      "password": "uros1234",
-      "confirmPassword": "uros1234",
-      "id": 8
-    },
-    {
-      "username": "",
-      "password": "",
-      "confirmPassword": "",
-      "id": 9
-    },
-    {
-      "username": "",
-      "password": "",
-      "confirmPassword": "",
-      "id": 10
-    },
-    {
-      "username": "uros",
-      "password": "uros1234",
-      "confirmPassword": "uros1234",
-      "id": 11
-    },
-    {
-      "username": "uros",
-      "password": "uros1234",
-      "confirmPassword": "uros1234",
-      "id": 12
-    },
-    {
-      "username": "uros",
-      "password": "uros1234",
-      "confirmPassword": "uros1234",
-      "id": 13
-    },
-    {
-      "username": "uros",
-      "password": "uros1234",
-      "confirmPassword": "uros1234",
-      "id": 14
-    },
-    {
-      "username": "uros",
-      "password": "uros12345",
-      "confirmPassword": "uros12345",
-      "id": 15
-    },
-    {
-      "username": "marko",
-      "password": "uros12345",
-      "confirmPassword": "uros12345",
-      "id": 16
     }
   ]
 }

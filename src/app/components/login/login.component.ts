@@ -24,12 +24,6 @@ export class LoginComponent implements OnInit {
   isLoading = false;
   durationInSeconds = 5;
 
-  toggleLoading = () => {
-    this.isLoading = true;
-
-    this.wait(40000).then( () => this.isLoading = false );
-  };
-
   constructor(
     private userService: UserService,
     private router: Router,
@@ -63,7 +57,7 @@ export class LoginComponent implements OnInit {
       });
 
       if(user){
-        localStorage.setItem('UserProfile',JSON.stringify(user));
+        localStorage.setItem('UserProfile',user.username);
         this.snackBar.openFromComponent(SnackBarComponent, {
           duration: this.durationInSeconds * 300,
         });

@@ -45,12 +45,28 @@ export class UserComponent implements OnInit, AfterViewInit {
     @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe((res) => {
-      this.dataSource.data = res;
-      console.log(res);
+    this.userService.getUsers().subscribe((users) => {
+      let currentLoggedInUser = localStorage.getItem('UserProfile')
+      for (let index = 0; index < users.length; index++) {
+         console.log(currentLoggedInUser);
+         
+        if(currentLoggedInUser == users[index].createdBy){
+          console.log('step1')
+
+          this.dataSource.data.push(users[index]) ;
+          this.dataSource._updateChangeSubscription();
+          console.log(this.dataSource.data);
+                 
+        }
+        else{
+          null;
+        }
+
+      }  
+      console.log(users);
     });
 
-    this.userDisplayName = localStorage.getItem('username')
+    this.userDisplayName = localStorage.getItem('UserProfile')
   }
 
   ngAfterViewInit() {

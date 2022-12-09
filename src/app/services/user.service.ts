@@ -34,6 +34,7 @@ export class UserService {
   }
 
   addUser(user: User) {
+    user.createdBy = localStorage.getItem('UserProfile');
     return this.http.post('http://localhost:3000/user', user);
   }
 

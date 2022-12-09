@@ -35,9 +35,9 @@ export class RegisterComponent implements OnInit {
         validators: this.mustMatch('password', 'confirmPassword')
       },
     );
-    this.userService.getAllUserProfiles().subscribe(res =>{
+
+    this.userService.getAllUserProfiles().subscribe(res => {
       this.userProfiles = res;
-      console.log(this.userProfiles);
     });
   }
 
@@ -66,40 +66,30 @@ export class RegisterComponent implements OnInit {
   }
 
   addNewUserProfile() {
-    if(this.checkIfUsernameExist(this.registerForm.value)){
-      console.log('step 1');
-
-      alert('Already Exist');
-      console.log('step 2');
-      
-    }
-    else{
+    if (this.checkIfUsernameExist(this.registerForm.value)) {
+    this.registerForm.get('username')?.setErrors({ invalid: 'Invalid Username' });    }
+    else {
       this.userService.addUserProfile(this.registerForm.value).subscribe((res) => {
         console.log(res);
-        this.router.navigate(['../login'], { relativeTo: this.route });        
+        this.router.navigate(['../login'], { relativeTo: this.route });
       })
     }
   }
 
-   checkIfUsernameExist(userProfile: UserProfile): boolean {
-   
-      console.log(this.userProfiles);
+  checkIfUsernameExist(userProfile: UserProfile): boolean {
 
-      let userExist = false;
-    let newUser = this.registerForm.get('username');        
-    console.log(this.userProfiles.length);
+    let userExist = false;
+    let newUser = this.registerForm.get('username');
 
     for (let index = 0; index < this.userProfiles.length; index++) {
-        if (newUser?.value === this.userProfiles[index].username) {
-          userExist = true;   
-          console.log('step3');
-       
-        }
-        
+      if (newUser?.value === this.userProfiles[index].username) {
+        userExist = true;
+      }
+
     }
     return userExist;
   }
-   
+
   get username() {
     return this.registerForm.get('username')
   }
@@ -110,6 +100,6 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('confirmPassword')
   }
 
- 
+
 }
 

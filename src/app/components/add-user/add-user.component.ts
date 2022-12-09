@@ -66,7 +66,7 @@ export class AddUserComponent implements OnInit {
       phone: new FormControl('',[Validators.pattern('[+()0-9]{8,15}')]),
       contractStartDate: new FormControl('',[Validators.required,]),
       contractEndDate: new FormControl('',[Validators.required]),
-      description: new FormControl('', [Validators.maxLength(30)])
+      description: new FormControl('', [Validators.maxLength(30)]),
     })
   }
 

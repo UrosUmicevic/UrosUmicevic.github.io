@@ -10,7 +10,7 @@ export class User {
   contractStartDate!: Date;
   contractEndDate!: string;
   description!: string;
-
+  createdBy: string | undefined | null
   
 
 
