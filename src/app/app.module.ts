@@ -24,6 +24,10 @@ import { RegisterComponent } from './components/register/register.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
+
+
 
 
 
@@ -55,7 +59,9 @@ import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
     MatSortModule,
     MatIconModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatToolbarModule,
+    MatMenuModule
 
   ],
   providers: [

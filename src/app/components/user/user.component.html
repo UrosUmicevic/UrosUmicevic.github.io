@@ -1,6 +1,29 @@
 <div class="top">
     <h2 class="nav">USERS</h2>
-  <button mat-stroked-button class="logout" color="warn" (click)="logoutUserProfile()">Logout</button>
+    <div class="username">
+        <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">
+            <!-- <mat-icon>home</mat-icon> -->
+            <span>Menu</span>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item disabled>
+                <mat-icon>verified_user</mat-icon>
+                <span>Logged User: {{userDisplayName}}</span>
+              </button>
+            <button mat-menu-item class="logout" color="warn" (click)="logoutUserProfile()">
+              <mat-icon>exit_to_app</mat-icon>
+              <span>Logout</span>
+            </button>
+            <button mat-menu-item routerLink="/addUser" >
+              <mat-icon>person_add</mat-icon>
+              <span>Add new user</span>
+            </button>
+            <button mat-menu-item disabled>
+              <mat-icon>security</mat-icon>
+              <span>Change password</span>
+            </button>
+          </mat-menu>
+    </div>
 </div>
 <div>
     <form class="date-block" [formGroup]="form" (submit)="applyDateFilter()">
@@ -8,11 +31,11 @@
             <mat-form-field appearance="standard">
                 <mat-label>Filter</mat-label>
                 <input matInput (keyup)="applyFilter($event)" #input>
-              </mat-form-field>
+            </mat-form-field>
             <mat-form-field>
-                <input matInput [matDatepicker]="fromDate" placeholder="From date" formControlName="fromDate" >
+                <input matInput [matDatepicker]="fromDate" placeholder="From date" formControlName="fromDate">
                 <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
-                <mat-datepicker #fromDate touchUi ></mat-datepicker>
+                <mat-datepicker #fromDate touchUi></mat-datepicker>
             </mat-form-field>
             <mat-form-field>
                 <input matInput [matDatepicker]="toDate" placeholder="To date" formControlName="toDate">
@@ -82,8 +105,6 @@
     </table>
 </div>
 
-<div clas="button">
+<!-- <div clas="button">
     <a mat-raised-button routerLink="/addUser" class=mat-raised-button color="primary">Add User</a>
-</div>
-
-<div class="username">Username: {{userDisplayName}}</div>
+</div> -->

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild} from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, OnDestroy, destroyPlatform} from '@angular/core';
 import { User } from '../../modules/user';
 import { UserService } from '../../services/user.service';
 import { MatSort, Sort, } from '@angular/material/sort';
@@ -6,8 +6,9 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { from } from 'rxjs';
+import { from, Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+
 
 
 const ELEMENT_DATA: User[] = [];
@@ -16,12 +17,13 @@ const ELEMENT_DATA: User[] = [];
   templateUrl: 'user.component.html',
   styleUrls: ['user.component.css']
 })
-export class UserComponent implements OnInit, AfterViewInit {
+export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
 
   users: User[] = [];
   id!: number;
   user!: User;
   userDisplayName!: any;
+  userSubscription!: Subscription;
  
   displayedColumns: string[] = ['id', 'name', 'email', 'role', 'age', 'location', 'phone', 'contractStartDate','contractEndDate','description','actions'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -39,34 +41,35 @@ export class UserComponent implements OnInit, AfterViewInit {
   constructor(
     private userService: UserService,
     private _liveAnnouncer: LiveAnnouncer,
-    private router: Router)
+    private router: Router,)
      {}
 
     @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit(): void {
-    this.userService.getUsers().subscribe((users) => {
+   this.userSubscription = this.userService.getUsers().subscribe((users) => {
       let currentLoggedInUser = localStorage.getItem('UserProfile')
       for (let index = 0; index < users.length; index++) {
-         console.log(currentLoggedInUser);
          
         if(currentLoggedInUser == users[index].createdBy){
-          console.log('step1')
 
           this.dataSource.data.push(users[index]) ;
-          this.dataSource._updateChangeSubscription();
-          console.log(this.dataSource.data);
-                 
+          this.dataSource._updateChangeSubscription();                 
         }
         else{
           null;
         }
-
       }  
-      console.log(users);
-    });
+    });    
 
     this.userDisplayName = localStorage.getItem('UserProfile')
+    
+  }
+
+  ngOnDestroy(){
+    for (let index = 0; index < this.dataSource.data.length; index++) {  
+      this.dataSource.data.pop();
+    }    
   }
 
   ngAfterViewInit() {
@@ -122,7 +125,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   logoutUserProfile(){
     this.userService.logout();
     this.router.navigate(['../login']);
-
   }
+
 }
 

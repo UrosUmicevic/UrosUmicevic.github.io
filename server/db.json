@@ -1,15 +1,28 @@
 {
   "user": [
     {
-      "id": 1,
+      "id": 2,
+      "name": "Ognjen",
+      "email": "pejcinovic.ognjen@gmail.com",
+      "role": "Administrator",
+      "age": "25",
+      "location": "Novi Sad",
+      "phone": "111123333",
+      "contractStartDate": "2022-12-25T23:00:00.000Z",
+      "contractEndDate": "2022-12-29T23:00:00.000Z",
+      "description": "",
+      "createdBy": "ogi"
+    },
+    {
+      "id": 3,
       "name": "uros",
       "email": "uros@gmail.com",
       "role": "QA",
-      "age": "22",
-      "location": "Novi Sad",
-      "phone": "2222222222",
-      "contractStartDate": "2022-12-18T23:00:00.000Z",
-      "contractEndDate": "2022-12-21T23:00:00.000Z",
+      "age": "24",
+      "location": "Belgrade",
+      "phone": "12212312313",
+      "contractStartDate": "2022-12-25T23:00:00.000Z",
+      "contractEndDate": "2022-12-29T23:00:00.000Z",
       "description": "",
       "createdBy": "uros"
     }
