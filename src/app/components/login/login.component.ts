@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     public snackBar: MatSnackBar
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -38,51 +38,51 @@ export class LoginComponent implements OnInit {
   }
   get f() { return this.loginForm.controls; }
 
-  createForm(){
+  createForm() {
     this.loginForm = new FormGroup({
-      username: new FormControl('',[Validators.required, Validators.pattern ('[0-9a-zA-Z]*$'), Validators.maxLength(15)]),
-      password: new FormControl('',[Validators.required])
+      username: new FormControl('', [Validators.required, Validators.pattern('[0-9a-zA-Z]*$'), Validators.maxLength(15)]),
+      password: new FormControl('', [Validators.required])
     })
   }
 
-  formSubmit( formData: FormGroup, loginDirective: FormGroupDirective){
+  formSubmit(formData: FormGroup, loginDirective: FormGroupDirective) {
     const username = formData.value.username;
     const password = formData.value.password;
   }
 
-  isLoginOk(loginForm: FormGroup){
-    this.userService.login().subscribe(res=>{
-      const user = res.find((a:any)=>{
+  isLoginOk(loginForm: FormGroup) {
+    this.userService.login().subscribe(res => {
+      const user = res.find((a: any) => {
         return a.username == this.loginForm.value.username && a.password == this.loginForm.value.password
       });
 
-      if(user){
-        localStorage.setItem('UserProfile',user.username);
+      if (user) {
+        localStorage.setItem('UserProfile', user.username);
         this.snackBar.openFromComponent(SnackBarComponent, {
           duration: this.durationInSeconds * 300,
         });
         this.loginForm.reset();
         this.router.navigate(['../user']), { relativeTo: this.route }
       }
-      else{
+      else {
         this.snackBar.open(this.message);
         this.router.navigate(['login']);
       }
     });
   }
 
-  load() : void {
+  load(): void {
     this.isLoading = true;
-    setTimeout( () => this.isLoading = false, 2000 );
+    setTimeout(() => this.isLoading = false, 2000);
   }
   async wait(ms: number): Promise<void> {
-		return new Promise<void>( resolve => setTimeout( resolve, ms) );
-	}
+    return new Promise<void>(resolve => setTimeout(resolve, ms));
+  }
 
-  get username(){
+  get username() {
     return this.loginForm.get('username')
   }
-  get password(){
+  get password() {
     return this.loginForm.get('password')
   }
 }

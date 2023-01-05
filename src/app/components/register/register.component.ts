@@ -71,7 +71,7 @@ export class RegisterComponent implements OnInit {
     else {
       this.userService.addUserProfile(this.registerForm.value).subscribe((res) => {
         console.log(res);
-        this.router.navigate(['../login'], { relativeTo: this.route });
+        this.router.navigate([''], { relativeTo: this.route });
       })
     }
   }

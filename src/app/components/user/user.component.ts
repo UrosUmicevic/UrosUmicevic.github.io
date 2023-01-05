@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, OnDestroy, destroyPlatform} from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, OnDestroy, destroyPlatform } from '@angular/core';
 import { User } from '../../modules/user';
 import { UserService } from '../../services/user.service';
 import { MatSort, Sort, } from '@angular/material/sort';
@@ -24,12 +24,12 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
   user!: User;
   userDisplayName!: any;
   userSubscription!: Subscription;
- 
-  displayedColumns: string[] = ['id', 'name', 'email', 'role', 'age', 'location', 'phone', 'contractStartDate','contractEndDate','description','actions'];
+
+  displayedColumns: string[] = ['id', 'name', 'email', 'role', 'age', 'location', 'phone', 'contractStartDate', 'contractEndDate', 'description', 'actions'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   pipe!: DatePipe;
 
-  
+
   form = new FormGroup({
     fromDate: new FormControl(),
     toDate: new FormControl(),
@@ -41,35 +41,35 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private userService: UserService,
     private _liveAnnouncer: LiveAnnouncer,
-    private router: Router,)
-     {}
+    private router: Router,) { }
 
-    @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit(): void {
-   this.userSubscription = this.userService.getUsers().subscribe((users) => {
+    this.userSubscription = this.userService.getUsers().subscribe((users) => {
       let currentLoggedInUser = localStorage.getItem('UserProfile')
       for (let index = 0; index < users.length; index++) {
-         
-        if(currentLoggedInUser == users[index].createdBy){
 
-          this.dataSource.data.push(users[index]) ;
-          this.dataSource._updateChangeSubscription();                 
+        if (currentLoggedInUser == users[index].createdBy) {
+
+          this.dataSource.data.push(users[index]);
+          this.dataSource._updateChangeSubscription();
         }
-        else{
+        else {
           null;
         }
-      }  
-    });    
+      }
+    });
 
     this.userDisplayName = localStorage.getItem('UserProfile')
-    
+
   }
 
-  ngOnDestroy(){
-    for (let index = 0; index < this.dataSource.data.length; index++) {  
+  ngOnDestroy() {
+    for (let index = 0; index < this.dataSource.data.length; index) {
       this.dataSource.data.pop();
-    }    
+    } console.log('end');
+
   }
 
   ngAfterViewInit() {
@@ -77,25 +77,25 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   applyDateFilter() {
-    
+
     this.pipe = new DatePipe('en');
-    this.dataSource.filterPredicate = (data, filter) =>{
-    var ed= new Date (data.contractEndDate); 
-      
-    if (this.fromDate && this.toDate) {
-      return ed >= this.fromDate && ed <= this.toDate;     
-    } 
-    else if(this.fromDate){
-      return ed >= this.fromDate;
+    this.dataSource.filterPredicate = (data, filter) => {
+      var ed = new Date(data.contractEndDate);
+
+      if (this.fromDate && this.toDate) {
+        return ed >= this.fromDate && ed <= this.toDate;
+      }
+      else if (this.fromDate) {
+        return ed >= this.fromDate;
+      }
+      else (this.toDate); {
+        return ed <= this.toDate;
+      }
     }
-    else (this.toDate);{
-      return ed <= this.toDate;
-    }   
-  }        
-    this.dataSource.filter = ''+ Math.random();
+    this.dataSource.filter = '' + Math.random();
     console.log(this.dataSource.filter);
     console.log(this.dataSource);
-    
+
   }
 
   announceSortChange(sortState: Sort) {
@@ -109,12 +109,12 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-    
+
     console.log(this.dataSource.filter);
     console.log(this.dataSource);
-    
+
   }
-  
+
   deleteUser(id: number) {
     this.userService.delete(id).subscribe(data => {
       console.log(data);
@@ -122,9 +122,9 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
     })
   }
 
-  logoutUserProfile(){
+  logoutUserProfile() {
     this.userService.logout();
-    this.router.navigate(['../login']);
+    this.router.navigate(['']);
   }
 
 }

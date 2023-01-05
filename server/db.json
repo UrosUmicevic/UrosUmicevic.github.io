@@ -25,6 +25,58 @@
       "contractEndDate": "2022-12-29T23:00:00.000Z",
       "description": "",
       "createdBy": "uros"
+    },
+    {
+      "id": 4,
+      "name": "uros",
+      "email": "Urosuros@gm.co",
+      "role": "QA",
+      "age": "22",
+      "location": "Belgrade",
+      "phone": "111111111111",
+      "contractStartDate": "2022-12-11T23:00:00.000Z",
+      "contractEndDate": "2022-12-15T23:00:00.000Z",
+      "description": "",
+      "createdBy": "uros"
+    },
+    {
+      "id": 6,
+      "name": "uros",
+      "email": "uros@gmail.com",
+      "role": "Developer",
+      "age": "22",
+      "location": "Belgrade",
+      "phone": "2223333444",
+      "contractStartDate": "2022-12-25T23:00:00.000Z",
+      "contractEndDate": "2022-12-29T23:00:00.000Z",
+      "description": "",
+      "createdBy": "ogi"
+    },
+    {
+      "id": 7,
+      "name": "stefan",
+      "email": "stefan@gmail.com",
+      "role": "QA",
+      "age": "25",
+      "location": "Novi Sad",
+      "phone": "21111111111",
+      "contractStartDate": "2022-12-17T23:00:00.000Z",
+      "contractEndDate": "2022-12-27T23:00:00.000Z",
+      "description": "",
+      "createdBy": "ogi"
+    },
+    {
+      "id": 8,
+      "name": "uros",
+      "email": "rrr@gm.com",
+      "role": "Customer",
+      "age": "19",
+      "location": "Novi Sad",
+      "phone": "998232893892",
+      "contractStartDate": "2023-01-22T23:00:00.000Z",
+      "contractEndDate": "2023-01-30T23:00:00.000Z",
+      "description": "",
+      "createdBy": "ogi"
     }
   ],
   "userProfile": [

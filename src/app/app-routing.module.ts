@@ -6,11 +6,13 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 const routes: Routes = [
-  {path:'user', component: UserComponent},
-  {path:'addUser', component: AddUserComponent},
-  {path:'editUser/:id', component: EditUserComponent},
-  {path:'login', component: LoginComponent},
-  {path:'register', component: RegisterComponent},
+  {path:'user', component: UserComponent, title:'User'},
+  {path:'addUser', component: AddUserComponent, title:'Add User'},
+  {path:'editUser/:id', component: EditUserComponent, title:'Edit User'},
+  {path:'register', component: RegisterComponent, title:'Register User'},
+  {path:'', component: LoginComponent, title:'Login'},
+
+  
 ];
 
 
