@@ -26,6 +26,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -61,7 +62,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule
 
   ],
   providers: [

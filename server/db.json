@@ -10,8 +10,7 @@
       "phone": "111123333",
       "contractStartDate": "2022-12-25T23:00:00.000Z",
       "contractEndDate": "2022-12-29T23:00:00.000Z",
-      "description": "",
-      "createdBy": "ogi"
+      "description": "Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     },
     {
       "id": 3,
@@ -23,8 +22,7 @@
       "phone": "12212312313",
       "contractStartDate": "2022-12-25T23:00:00.000Z",
       "contractEndDate": "2022-12-29T23:00:00.000Z",
-      "description": "",
-      "createdBy": "uros"
+      "description": ""
     },
     {
       "id": 4,
@@ -36,8 +34,7 @@
       "phone": "111111111111",
       "contractStartDate": "2022-12-11T23:00:00.000Z",
       "contractEndDate": "2022-12-15T23:00:00.000Z",
-      "description": "",
-      "createdBy": "uros"
+      "description": "aaaaaaaaaaaaaaaaaaa"
     },
     {
       "id": 6,
@@ -49,8 +46,7 @@
       "phone": "2223333444",
       "contractStartDate": "2022-12-25T23:00:00.000Z",
       "contractEndDate": "2022-12-29T23:00:00.000Z",
-      "description": "",
-      "createdBy": "ogi"
+      "description": "aaaaaaaaaaaaaaaaaaaaaaa"
     },
     {
       "id": 7,
@@ -62,8 +58,7 @@
       "phone": "21111111111",
       "contractStartDate": "2022-12-17T23:00:00.000Z",
       "contractEndDate": "2022-12-27T23:00:00.000Z",
-      "description": "",
-      "createdBy": "ogi"
+      "description": ""
     },
     {
       "id": 8,
@@ -75,6 +70,31 @@
       "phone": "998232893892",
       "contractStartDate": "2023-01-22T23:00:00.000Z",
       "contractEndDate": "2023-01-30T23:00:00.000Z",
+      "description": ""
+    },
+    {
+      "id": 9,
+      "name": "uros",
+      "email": "uros@ddd.com",
+      "role": "QA",
+      "age": "22",
+      "location": "Novi Sad",
+      "phone": "222222222222",
+      "contractStartDate": "2023-01-21T23:00:00.000Z",
+      "contractEndDate": "2023-01-25T23:00:00.000Z",
+      "description": "",
+      "createdBy": null
+    },
+    {
+      "id": 10,
+      "name": "uros",
+      "email": "uros@gmail.com",
+      "role": "QA",
+      "age": "22",
+      "location": "Belgrade",
+      "phone": "2222222222",
+      "contractStartDate": "2023-01-17T23:00:00.000Z",
+      "contractEndDate": "2023-01-26T23:00:00.000Z",
       "description": "",
       "createdBy": "ogi"
     }

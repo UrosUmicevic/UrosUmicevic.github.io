@@ -1,21 +1,27 @@
 .nav{
     text-align: center;
 }
+/* .body{
+	background: no-repeat url(https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Flogin&psig=AOvVaw3T6375t0nIM3c3MvGLclOr&ust=1694270899577000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCMDyxYyhm4EDFQAAAAAdAAAAABAE);
+} */
+/* .mat-input-wrapper{
+	background-color: green;
+} */
+ 
 .form-box{
-   
+	
     text-align: center;
 }
-#spinner {
-	-webkit-animation: frames 1s infinite linear;
-	animation: frames 1s infinite linear;
-	background: transparent;
-	border: 1.75vw solid #FFF;
-	border-radius: 100%;
-	border-top-color: #DF691A;
-	width: 20vw;
-	height: 20vw;
-	opacity: .6;
-	padding: 0;
-	position: absolute;
-	z-index: 999;
+.button{
+	text-align: center;
 }
+.text-center{
+	text-align: center;
+}
+.card{
+	width: 50%;
+	margin-top: 100px;
+	margin-left: 300px;
+	background-color: aliceblue;
+}
+

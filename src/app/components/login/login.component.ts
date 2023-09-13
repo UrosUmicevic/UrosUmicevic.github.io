@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   userData: any;
-  isLoading = false;
   durationInSeconds = 5;
 
   constructor(
@@ -36,7 +35,6 @@ export class LoginComponent implements OnInit {
     this.createForm();
 
   }
-  get f() { return this.loginForm.controls; }
 
   createForm() {
     this.loginForm = new FormGroup({
@@ -61,6 +59,7 @@ export class LoginComponent implements OnInit {
         this.snackBar.openFromComponent(SnackBarComponent, {
           duration: this.durationInSeconds * 300,
         });
+        
         this.loginForm.reset();
         this.router.navigate(['../user']), { relativeTo: this.route }
       }
@@ -69,14 +68,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['login']);
       }
     });
-  }
-
-  load(): void {
-    this.isLoading = true;
-    setTimeout(() => this.isLoading = false, 2000);
-  }
-  async wait(ms: number): Promise<void> {
-    return new Promise<void>(resolve => setTimeout(resolve, ms));
   }
 
   get username() {

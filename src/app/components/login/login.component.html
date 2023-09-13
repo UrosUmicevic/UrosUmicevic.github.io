@@ -1,3 +1,5 @@
+<div class="body">
+<mat-card class="card">
 <div class="nav">
     <h2>User login</h2>
 </div>
@@ -25,14 +27,16 @@
               </mat-error>
           </mat-form-field>
         </div>
+      </form>
         <div class="button">
             <button [disabled]="loading" mat-stroked-button color="primary" (click)="isLoginOk(loginForm)">
                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                 Login
                 </button>
         </div>
-        <div class="text-center sign-up">
+        <div class="text-center">
             Don`t have an account ? <a mat-stroked-button color="primary" routerLink="../register">Register</a>
           </div>
-    </form>
   </div>
+</mat-card>
+</div>

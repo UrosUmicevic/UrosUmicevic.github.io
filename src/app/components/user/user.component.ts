@@ -68,7 +68,7 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() {
     for (let index = 0; index < this.dataSource.data.length; index) {
       this.dataSource.data.pop();
-    } console.log('end');
+    } 
 
   }
 
@@ -77,7 +77,6 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   applyDateFilter() {
-
     this.pipe = new DatePipe('en');
     this.dataSource.filterPredicate = (data, filter) => {
       var ed = new Date(data.contractEndDate);
@@ -93,9 +92,6 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     }
     this.dataSource.filter = '' + Math.random();
-    console.log(this.dataSource.filter);
-    console.log(this.dataSource);
-
   }
 
   announceSortChange(sortState: Sort) {
@@ -109,10 +105,6 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    console.log(this.dataSource.filter);
-    console.log(this.dataSource);
-
   }
 
   deleteUser(id: number) {

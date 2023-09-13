@@ -40,7 +40,6 @@ export class EditUserComponent implements OnInit {
   id_string: string | null | undefined;
   id!: number;
   users: User[] = [];
-  // user!: User;
   form!: FormGroup;
   currentUser!: User;
 
@@ -64,7 +63,7 @@ export class EditUserComponent implements OnInit {
       phone: new FormControl('',[Validators.pattern('[+()0-9]{8,15}')]),
       contractStartDate: new FormControl('',[Validators.required]),
       contractEndDate: new FormControl('',[Validators.required]),
-      description: new FormControl('', [Validators.maxLength(30)])
+      description: new FormControl('', [Validators.maxLength(30)]),
 
     });
 
@@ -95,11 +94,7 @@ export class EditUserComponent implements OnInit {
       contractStartDate: this.currentUser.contractStartDate,
       contractEndDate: this.currentUser.contractEndDate,
       description: this.currentUser.description,
-
-
-    });
-
-  
+      });
     });
   }
 
